@@ -2,14 +2,14 @@
 
 Welcome to my portfolio website! This website showcases my work in game development and design.
 
-# About
+## About
 
 This website was created using HTML, CSS, and JavaScript. It is hosted on GitHub Pages and can be accessed [here.](garrettgoodwin.github.io)
 
-# Contact
+## Contact
 
 If you have any questions or would like to discuss potential collaborations, please feel free to reach out to me at garrett.w.goodwin@gmail.com
 
-# License
+## License
 
 This project is licensed under the MIT License.
