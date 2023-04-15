@@ -1,7 +1,7 @@
 body {
-    margin: 0;
-    background: #0c0c0c;;
-    text-align: center;
+  margin: 0;
+  background: #0c0c0c;
+  text-align: center;
 }
 
 img {
@@ -47,7 +47,9 @@ nav ul li a {
   text-decoration: none;
 }
 
-nav ul li a.active {
+/* Underline the active link */
+nav ul li a.active,
+nav ul li a.active:hover {
   text-decoration: underline;
   background-color: transparent;
 }
