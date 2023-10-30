@@ -1,0 +1,170 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<Parks 
+	xmlns ="http://www.public.asu.edu/~gwgoodwi/Parks"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://www.public.asu.edu/~gwgoodwi/Parks Parks.xsd">
+	<!--1-->
+	<Park type="Recreational">
+		<Owner>Federal Government</Owner>
+		<Name>Grand Canyon</Name>
+		<Reservation>
+			<Address>20 South Entrance Road Grand Canyon, AZ 86023</Address>
+			<Url>https://www.nps.gov/yellwww.nps.gov/grca</Url>
+		</Reservation>
+		<NeighboringStates>Arizona</NeighboringStates>
+		<NeighboringStates>Utah</NeighboringStates>
+		<NeighboringStates>Nevada</NeighboringStates>
+		<NeighboringStates>California</NeighboringStates>
+		<NeighboringStates>Colorado</NeighboringStates>
+		<NeighboringStates>New Mexico</NeighboringStates>
+		<Establishedn Founder="Roosevelt">1919</Establishedn>
+	</Park>
+
+	<!--2-->
+	<Park type="Recreational">
+		<Owner>Federal Government</Owner>
+		<Name>Yellowstone National Park</Name>
+		<Reservation>
+			<Address>Yellowstone National Park, WY 82190</Address>
+			<Url>https://www.nps.gov/yell</Url>
+		</Reservation>
+		<NeighboringStates>Wyoming</NeighboringStates>
+		<NeighboringStates>Idaho</NeighboringStates>
+		<NeighboringStates>Montana</NeighboringStates>
+		<NeighboringStates>Oregon</NeighboringStates>
+		<NeighboringStates>North Dakota</NeighboringStates>
+		<NeighboringStates>South Dakota</NeighboringStates>
+		<NeighboringStates>Washington</NeighboringStates>
+		<NeighboringStates>Nevada</NeighboringStates>
+		<NeighboringStates>Utah</NeighboringStates>
+		<Establishedn Founder ="John Colter">1872</Establishedn>
+	</Park>
+
+	<!--3-->
+	<Park type="Recreational">
+		<Owner>Federal Government</Owner>
+		<Name>Yosemite National Park</Name>
+		<Reservation>
+			<Address>Tioga Rd Hwy 120 &amp; Hwy 140 Yosemite National Park, CA 95389</Address>
+			<Url>https://www.nps.gov/yose</Url>
+		</Reservation>
+		<NeighboringStates>Arizona</NeighboringStates>
+		<NeighboringStates>Nevada</NeighboringStates>
+		<NeighboringStates>Oregon</NeighboringStates>
+		<Establishedn>1890</Establishedn>
+	</Park>
+
+	<!--4-->
+	<Park type="Recreational">
+		<Owner>Federal Government</Owner>
+		<Name>Rocky Mountain National Park</Name>
+		<Reservation>
+			<Address>Rocky Mountain National Park 1000 Highway 36. Estes Park, CO 80517</Address>
+			<Url>https://www.nps.gov/romo</Url>
+		</Reservation>
+		<NeighboringStates>Arizona</NeighboringStates>
+		<NeighboringStates>Wyoming</NeighboringStates>
+		<NeighboringStates>Utah</NeighboringStates>
+		<NeighboringStates>Kansas</NeighboringStates>
+		<NeighboringStates>Oklahoma</NeighboringStates>
+		<NeighboringStates>Nebraska</NeighboringStates>
+		<NeighboringStates>New Mexico</NeighboringStates>
+		<Establishedn>1915</Establishedn>
+	</Park>
+
+	<!--5-->
+	<Park type="Recreational">
+		<Owner>Federal Government</Owner>
+		<Name>Great Sand Dunes National Park</Name>
+		<Reservation>
+			<Address>Visitor Center 11999 State Highway 150. Mosca, CO 81146</Address>
+			<Url>https://www.nps.gov/grsa</Url>
+		</Reservation>
+		<NeighboringStates>Arizona</NeighboringStates>
+		<NeighboringStates>Utah</NeighboringStates>
+		<NeighboringStates>New Mexico</NeighboringStates>
+		<NeighboringStates>Wyoming</NeighboringStates>
+		<NeighboringStates>Oklahoma</NeighboringStates>
+		<NeighboringStates>Kansas</NeighboringStates>
+		<NeighboringStates>Nebraska</NeighboringStates>
+		<Establishedn>1932</Establishedn>
+	</Park>
+
+	<!--6-->
+	<Park type="Recreational">
+		<Owner>Federal Government</Owner>
+		<Name>Crater Lake National Park</Name>
+		<Reservation>
+			<Address>Crater Lake National Park Rim Village Crater Lake , OR 97604</Address>
+			<Url>https://www.nps.gov/crla</Url>
+		</Reservation>
+		<NeighboringStates>Nevada</NeighboringStates>
+		<NeighboringStates>California</NeighboringStates>
+		<NeighboringStates>Washington</NeighboringStates>
+		<NeighboringStates>Idaho</NeighboringStates>
+		<Establishedn>1902</Establishedn>
+
+	</Park>
+
+	<!--7-->
+	<Park type="Recreational">
+		<Owner>Federal Government</Owner>
+		<Name>Everglades National Park</Name>
+		<Reservation>
+			<Address>1 Flamingo Lodge Highway, Flamingo, FL 33034</Address>
+			<Url>https://www.nps.gov/ever</Url>
+		</Reservation>
+		<NeighboringStates>Georgia</NeighboringStates>
+		<NeighboringStates>Alabama</NeighboringStates>
+		<Establishedn>1947</Establishedn>
+	</Park>
+
+	<!--8-->
+	<Park type="Recreational">
+		<Owner>Federal Government</Owner>
+		<Name>Mesa Verde National Park</Name>
+		<Reservation>
+			<Address>Mile .7 Headquarters Loop Road Mesa Verde National Park, CO 81330</Address>
+			<Url>https://www.nps.gov/meve</Url>
+		</Reservation>
+		<NeighboringStates>Arizona</NeighboringStates>
+		<NeighboringStates>Utah</NeighboringStates>
+		<NeighboringStates>New Mexico</NeighboringStates>
+		<NeighboringStates>Wyoming</NeighboringStates>
+		<NeighboringStates>Kansas</NeighboringStates>
+		<NeighboringStates>Oklahoma</NeighboringStates>
+		<NeighboringStates>Nebraska</NeighboringStates>
+		<Establishedn>1906</Establishedn>
+
+	</Park>
+
+	<!--9-->
+	<Park type="Recreational">
+		<Owner>Federal Government</Owner>
+		<Name>Hawai'i Volcanoes National Park</Name>
+		<Reservation>
+			<Address>National Park, 1 Crater Rim Drive, Volcano, HI 96785</Address>
+			<Url>https://www.nps.gov/havo</Url>
+		</Reservation>
+		<Establishedn>1916</Establishedn>
+	</Park>
+
+	<!--10-->
+	<Park type="Recreational">
+		<Owner>Federal Government</Owner>
+		<Name>Great Smokey Mountains National Park</Name>
+		<Reservation>
+			<Address>107 Park Headquarters Road Gatlinburg, TN 37738</Address>
+			<Url>https://www.nps.gov/grsm</Url>
+		</Reservation>
+		<NeighboringStates>Georgia</NeighboringStates>
+		<NeighboringStates>Alabama</NeighboringStates>
+		<NeighboringStates>Kentucky</NeighboringStates>
+		<NeighboringStates>Mississippi</NeighboringStates>
+		<NeighboringStates>Missouri</NeighboringStates>
+		<NeighboringStates>Arkansas</NeighboringStates>
+		<NeighboringStates>North Carolina</NeighboringStates>
+		<NeighboringStates>Virginia</NeighboringStates>
+		<Establishedn>1934</Establishedn>
+	</Park>
+</Parks>
