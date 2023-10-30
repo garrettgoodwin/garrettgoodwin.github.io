@@ -26,7 +26,7 @@
 								<xs:complexType>
 									<xs:simpleContent>
 										<xs:extension base ="xs:int">
-											<xs:attribute name =" Founder" type="xs:string" use="optional"/>
+											<xs:attribute name ="Founder" type="xs:string" use="optional"/>
 										</xs:extension>
 									</xs:simpleContent>
 								</xs:complexType>
