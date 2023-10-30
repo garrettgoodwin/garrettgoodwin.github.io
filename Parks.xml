@@ -1,8 +1,8 @@
-﻿<?xml version="1.0" encoding="utf-8" ?> 
+<?xml version="1.0" encoding="utf-8" ?> 
 <Parks 
 	xmlns ="http://www.public.asu.edu/~gwgoodwi/Parks"
    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-   xsi:schemaLocation="http://www.public.asu.edu/~gwgoodwi/Parks Parks.xsd">
+   xsi:schemaLocation="http://www.public.asu.edu/~gwgoodwi/Parks https://raw.githubusercontent.com/garrettgoodwin/garrettgoodwin.github.io/main/Parks.xsd">
 	<!--1-->
 	<Park type="Recreational">
 		<Owner>Federal Government</Owner>
