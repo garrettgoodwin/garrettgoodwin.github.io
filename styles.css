@@ -12,7 +12,7 @@ img {
 .centered-square {
     width: 300px; /* Width of the square */
     height: 300px; /* Height of the square */
-    background-color: grey; /* Grey background */
+    background-color: #040404; /* Grey background */
     margin: 0 auto; /* Center horizontally */
     padding: 20px; /* Padding inside the square */
     /* Removed flexbox properties */
