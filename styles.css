@@ -8,21 +8,3 @@ img {
   height: 300px;
   width: auto;
 }
-
-/* Set the width of the scrollbar */
-::-webkit-scrollbar {
-  width: 10px;
-}
-
-/* Change the background color of the scrollbar track */
-::-webkit-scrollbar-track {
-  background-color: #0c0c0c;
-}
-
-/* Change the color and shape of the scrollbar thumb */
-::-webkit-scrollbar-thumb {
-  background-color: purple;
-  border-radius: 20px;
-}
-
-
