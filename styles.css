@@ -14,14 +14,14 @@ img {
     height: 300px; /* Height of the square */
     background-color: grey; /* Grey background */
     margin: 0 auto; /* Center horizontally */
-    display: flex;
-    align-items: center; /* Center text vertically */
-    justify-content: center; /* Center text horizontally */
-    /* Add more styling as needed */
+    padding: 20px; /* Padding inside the square */
+    /* Removed flexbox properties */
 }
 
 .centered-square p {
     color: white; /* Text color */
-    text-align: center; /* Center text */
-    /* Add more text styling as needed */
+    text-align: left; /* Align text to the left */
+    margin-top: 0; /* Start text from the top */
+    /* Additional text styling as needed */
 }
+
