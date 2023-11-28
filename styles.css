@@ -8,3 +8,20 @@ img {
   height: 300px;
   width: auto;
 }
+
+.centered-square {
+    width: 300px; /* Width of the square */
+    height: 300px; /* Height of the square */
+    background-color: grey; /* Grey background */
+    margin: 0 auto; /* Center horizontally */
+    display: flex;
+    align-items: center; /* Center text vertically */
+    justify-content: center; /* Center text horizontally */
+    /* Add more styling as needed */
+}
+
+.centered-square p {
+    color: white; /* Text color */
+    text-align: center; /* Center text */
+    /* Add more text styling as needed */
+}
