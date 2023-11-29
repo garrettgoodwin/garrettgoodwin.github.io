@@ -10,12 +10,12 @@ img {
 }
 
 .centered-square {
-    width: 300px; /* Width of the square */
-    height: 300px; /* Height of the square */
+    width: 700px; /* Width of the square */
+    height: 200px; /* Height of the square */
     background-color: #040404; /* Grey background */
     margin: 0 auto; /* Center horizontally */
     padding: 20px; /* Padding inside the square */
-    /* Removed flexbox properties */
+    border-radius: 15px; /* Rounded corners, adjust as needed */
 }
 
 .centered-square p {
@@ -24,4 +24,25 @@ img {
     margin-top: 0; /* Start text from the top */
     /* Additional text styling as needed */
 }
+
+.text-image-container {
+    display: flex; /* Aligns items in a row */
+    align-items: center; /* Centers items vertically */
+    background-color: #040404; /* Your box color */
+    padding: 20px;
+    border-radius: 15px; /* Rounded corners */
+    max-width: 700px; /* Maximum width of the container */
+    margin: 0 auto; /* Centers the container */
+}
+
+    .text-image-container .text-content {
+        flex-grow: 1; /* Allows text content to fill available space */
+        text-align: left;
+    }
+
+    .text-image-container img {
+        margin-left: 20px; /* Adds space between the text and the image */
+        width: 180px; /* Adjust as needed */
+        height: auto; /* Keeps the aspect ratio of the image */
+    }
 
