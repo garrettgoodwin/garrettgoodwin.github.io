@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#0b0d12">
+  <meta name="description" content="Light in the Dark game-development case study by Garrett Goodwin.">
+  <title>Light in the Dark Case Study | Garrett Goodwin</title><link rel="stylesheet" href="/styles.css"><script src="/script.js" defer></script>
+</head>
+<body class="subpage project-detail">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header" data-header><a class="brand" href="/" aria-label="Garrett Goodwin home"><span class="brand-mark">GG</span><span>Garrett Goodwin</span></a><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav"><span></span><span></span><span></span><span class="sr-only">Open navigation</span></button><nav id="site-nav" aria-label="Primary"><a class="active" href="/projects/">Projects</a><a href="/#experience">Experience</a><a href="/#about">About</a><a href="https://github.com/garrettgoodwin" target="_blank" rel="noreferrer">GitHub ↗</a><a class="nav-contact" href="mailto:garrett.w.goodwin@gmail.com">Contact</a></nav></header>
+  <main id="main">
+    <section class="detail-hero wrap">
+      <a class="back-link" href="/projects/">← All projects</a>
+      <div class="detail-heading"><div><p class="eyebrow">Independent project · 2021–2022</p><h1>Light in the Dark</h1><p class="detail-lede">A top-down survival shooter about holding back increasingly dangerous waves of enemies.</p></div></div>
+      <div class="hero-frame hero-frame-contained"><img src="/assets/light-in-the-dark.webp" alt="Light in the Dark title artwork."></div>
+      <dl class="fact-bar"><div><dt>Role</dt><dd>Gameplay Programmer</dd></div><div><dt>Genre</dt><dd>2D wave shooter</dd></div><div><dt>Technology</dt><dd>Unity · C#</dd></div><div><dt>Focus</dt><dd>AI · Progression</dd></div></dl>
+    </section>
+
+    <section class="detail-section wrap two-column"><div><p class="eyebrow">Overview</p><h2>My first released Unity game</h2></div><div class="prose"><p>Light in the Dark began as an early attempt to build a complete game rather than an isolated mechanic. The player survives an escalating horde by moving, aiming, shooting, managing health, and selecting upgrades.</p><p>The project required the core loop, enemy variety, progression, interface, art, menus, and release process to work together. It became the foundation for many of the systems-oriented decisions I make in larger projects today.</p></div></section>
+
+    <section class="detail-section tinted-section"><div class="wrap"><div class="section-heading"><div><p class="eyebrow">My contribution</p><h2>From core loop to playable release</h2></div><p>I designed and implemented the gameplay while creating and adapting the supporting visual assets and interface.</p></div><div class="system-grid"><article><span>01</span><h3>Enemy behaviors</h3><p>Built several enemy archetypes with different movement and combat behaviors to vary the pressure placed on the player.</p></article><article><span>02</span><h3>Wave progression</h3><p>Connected spawning and difficulty escalation to a survival loop that becomes increasingly dangerous over time.</p></article><article><span>03</span><h3>Player upgrades</h3><p>Implemented upgrades affecting fire rate, damage, and health so the player can improve during a run.</p></article><article><span>04</span><h3>Game presentation</h3><p>Created menus, controls, feedback, and development artwork needed to turn the mechanics into a playable release.</p></article></div></div></section>
+
+    <section class="detail-section wrap challenge-layout"><div class="challenge-copy"><p class="eyebrow">Design challenge</p><h2>Creating variety from a simple foundation</h2><p>The primary mechanic is intentionally straightforward: move, aim, and fire while surviving a growing horde. The challenge was making that loop remain interesting as pressure increased.</p><p>I used enemy archetypes, wave pacing, and upgrades to change how the player evaluates space and danger. The project taught me that readable differences in behavior are often more useful than simply adding more objects or statistics.</p></div><div class="process-panel" aria-label="Core gameplay loop"><p class="card-label">Core gameplay loop</p><ol><li><span>1</span>Enter a wave</li><li><span>2</span>Read enemy behaviors</li><li><span>3</span>Survive and improve</li><li><span>4</span>Face stronger pressure</li></ol></div></section>
+
+    <section class="detail-section visual-section">
+      <div class="wrap">
+        <div class="section-heading"><div><p class="eyebrow">Visual development</p><h2>How the project took shape</h2></div><p>A focused selection of early references, enemy concepts, upgrades, character work, and the final menu communicates the development process more clearly than a long image dump.</p></div>
+        <div class="visual-gallery">
+          <figure class="gallery-wide"><div class="gallery-image"><img src="/assets/light-in-the-dark/inspiration.webp" alt="Early monster references beside the Light in the Dark enemy designs."></div><figcaption><strong>Reference to original direction</strong><span>Early visual research translated into a smaller, consistent enemy roster.</span></figcaption></figure>
+          <figure><div class="gallery-image"><img src="/assets/light-in-the-dark/enemies.webp" alt="Zombie, skeleton, ghost, and spider enemies from Light in the Dark."></div><figcaption><strong>Enemy roster</strong><span>Four readable archetypes support different forms of pressure.</span></figcaption></figure>
+          <figure><div class="gallery-image"><img src="/assets/light-in-the-dark/upgrades.webp" alt="Fire-rate, damage, and health upgrade icons."></div><figcaption><strong>Player upgrades</strong><span>Simple iconography makes the three upgrade choices immediately recognizable.</span></figcaption></figure>
+          <figure><div class="gallery-image"><img src="/assets/light-in-the-dark/early-character.webp" alt="Early character construction artwork for Light in the Dark."></div><figcaption><strong>Character construction</strong><span>Early body-part studies used while developing the player character.</span></figcaption></figure>
+          <figure><div class="gallery-image gallery-image-menu"><img src="/assets/light-in-the-dark/menu.webp" alt="Light in the Dark main menu."></div><figcaption><strong>Finished menu</strong><span>The project grew from a gameplay test into a complete, navigable release.</span></figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="detail-section wrap"><div class="section-heading"><div><p class="eyebrow">Takeaways</p><h2>Lessons carried into later work</h2></div></div><div class="feature-list three-up"><article><h3>Finish the whole loop</h3><p>Menus, controls, difficulty, feedback, and release preparation matter as much as the central mechanic.</p></article><article><h3>Build readable enemies</h3><p>Distinct silhouettes and behaviors help players make decisions while the screen becomes busy.</p></article><article><h3>Use progression deliberately</h3><p>Upgrades are most satisfying when they noticeably change the player’s ability to manage pressure.</p></article></div></section>
+    <nav class="project-next wrap" aria-label="Other projects"><a href="/projects/reapkeep/"><span>Current project</span><strong>Explore ReapKeep →</strong></a></nav>
+  </main>
+  <footer class="wrap"><p>© <span data-year>2026</span> Garrett Goodwin</p><p><a href="/projects/">All projects</a> · <a href="mailto:garrett.w.goodwin@gmail.com">Contact</a></p></footer>
+</body>
+</html>

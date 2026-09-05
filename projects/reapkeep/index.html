@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b0d12">
+  <meta name="description" content="ReapKeep development case study by solo developer Garrett Goodwin.">
+  <title>ReapKeep Case Study | Garrett Goodwin</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/script.js" defer></script>
+</head>
+<body class="subpage project-detail">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header" data-header>
+    <a class="brand" href="/" aria-label="Garrett Goodwin home"><span class="brand-mark">GG</span><span>Garrett Goodwin</span></a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav"><span></span><span></span><span></span><span class="sr-only">Open navigation</span></button>
+    <nav id="site-nav" aria-label="Primary"><a class="active" href="/projects/">Projects</a><a href="/#experience">Experience</a><a href="/#about">About</a><a href="https://github.com/garrettgoodwin" target="_blank" rel="noreferrer">GitHub ↗</a><a class="nav-contact" href="mailto:garrett.w.goodwin@gmail.com">Contact</a></nav>
+  </header>
+
+  <main id="main">
+    <section class="detail-hero wrap">
+      <a class="back-link" href="/projects/">← All projects</a>
+      <div class="detail-heading">
+        <div><p class="eyebrow">Solo game development · 2025–Present</p><h1>ReapKeep</h1><p class="detail-lede">A reverse bullet-hell roguelike about shaping a run through weapons, characters, progression, and dangerous rule-changing choices.</p></div>
+        <div class="detail-actions"><a class="button primary" href="https://reapkeep.garrett-w-goodwin.chatgpt.site" target="_blank" rel="noreferrer">Visit game website ↗</a></div>
+      </div>
+      <div class="hero-frame"><img src="/assets/reapkeep-key-art.webp" alt="ReapKeep key artwork with the Reaper and masked enemies."></div>
+      <dl class="fact-bar">
+        <div><dt>Role</dt><dd>Solo Developer</dd></div>
+        <div><dt>Platform</dt><dd>PC · Steam</dd></div>
+        <div><dt>Technology</dt><dd>Unity · C# · URP</dd></div>
+        <div><dt>Focus</dt><dd>Gameplay systems · Tools</dd></div>
+      </dl>
+      <nav class="case-nav" aria-label="Case study sections"><a href="#overview">Overview</a><a href="#contribution">Contribution</a><a href="#engineering">Engineering</a><a href="#architecture">Architecture</a></nav>
+    </section>
+
+    <section class="detail-section wrap two-column" id="overview">
+      <div><p class="eyebrow">Overview</p><h2>Building a full game, not only a prototype</h2></div>
+      <div class="prose"><p>ReapKeep is my largest independent project. I own its design, programming, content pipeline, interface, balancing tools, technical documentation, and release planning. A typical run lasts 15 minutes and combines automatic combat with character mechanics, evolving weapons, escalating encounters, and Death’s Decrees that alter the rules of the current run.</p><p>The central engineering goal is to keep those systems expandable. New weapons, items, enemies, rewards, and encounters are authored through data rather than being hard-coded into individual scenes.</p></div>
+    </section>
+
+    <section class="detail-section tinted-section" id="contribution">
+      <div class="wrap">
+        <div class="section-heading"><div><p class="eyebrow">My contribution</p><h2>Systems built for iteration</h2></div><p>The project connects moment-to-moment combat with the tools and validation needed to keep adding content safely.</p></div>
+        <div class="system-grid">
+          <article><span>01</span><h3>Combat architecture</h3><p>Weapons, runtime stat recalculation, character abilities, evolutions, projectiles, damage feedback, enemy behaviors, bosses, and encounter pacing.</p></article>
+          <article><span>02</span><h3>Data and authoring tools</h3><p>ScriptableObject-driven content, CSV importers, database organization, evolution-route builders, audits, and custom Unity editor workflows.</p></article>
+          <article><span>03</span><h3>Progression and interface</h3><p>Level-up rewards, inventories, achievements, collections, bestiary entries, save data, run history, menus, and controller-aware navigation.</p></article>
+          <article><span>04</span><h3>Performance and verification</h3><p>Object pooling, spawn-curve testing, automated damage benchmarks, diagnostic tools, and cross-system checks for a high-enemy-count game.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="detail-section engineering-section" id="engineering">
+      <div class="wrap">
+        <div class="section-heading engineering-heading"><div><p class="eyebrow">Engineering deep dives</p><h2>The systems behind the run</h2></div><p>These examples are drawn from the current Unity project and show how I approach scalability, iteration, validation, and runtime performance.</p></div>
+
+        <div class="deep-dive-list">
+          <article class="deep-dive">
+            <div class="deep-copy"><p class="deep-index">01 · Content pipeline</p><h3>Author once, validate, then run</h3><p>Weapons, items, enemies, characters, achievements, and spawn phases are represented as reusable data assets. Custom Unity windows import balancing tables, validate required fields, build related assets, and audit evolution routes before content reaches a playtest.</p><ul><li>CSV validation can run without modifying assets</li><li>Per-level weapon rows feed centralized runtime calculations</li><li>Audit tools detect incomplete or conflicting configurations</li></ul></div>
+            <div class="tech-visual pipeline-visual" role="img" aria-label="Content pipeline from CSV balancing data through validation and ScriptableObject assets into Unity runtime systems.">
+              <p class="visual-label">Content authoring flow</p>
+              <div class="pipeline-flow"><span>CSV tables</span><i>→</i><span>Validation</span><i>→</i><span>Data assets</span><i>→</i><span>Runtime</span></div>
+              <div class="visual-stat-row"><div><strong>61</strong><span>Editor windows</span></div><div><strong>120</strong><span>ScriptableObject types</span></div><div><strong>10</strong><span>CSV/table tools</span></div></div>
+              <small>Counts from the reviewed script snapshot.</small>
+            </div>
+          </article>
+
+          <article class="deep-dive reverse">
+            <div class="deep-copy"><p class="deep-index">02 · Automated verification</p><h3>Repeatable balance tests instead of guesswork</h3><p>A deterministic benchmark runner executes AI-controlled passes across multiple difficulty levels. It preserves the same seeded upgrade plan between runs and writes a detailed CSV timeline for comparison.</p><ul><li>Records enemy pressure, damage, progression, movement, and FPS</li><li>Tracks upgrade-sequence hashes and failed replay plans</li><li>Supports accelerated runs, invulnerability, and defined end conditions</li></ul></div>
+            <div class="tech-visual benchmark-visual" role="img" aria-label="Deterministic benchmark configuration and recorded telemetry categories.">
+              <div class="benchmark-top"><span>DIFFICULTY BENCHMARK</span><span>DETERMINISTIC</span></div>
+              <div class="benchmark-config"><div><span>Seed</span><strong>1337</strong></div><div><span>Default passes</span><strong>I · II · III</strong></div><div><span>Sample interval</span><strong>5 sec</strong></div><div><span>Export</span><strong>CSV</strong></div></div>
+              <div class="metric-stream"><span>enemy population</span><span>spawn pressure</span><span>damage dealt</span><span>player health</span><span>upgrade sequence</span><span>movement</span><span>stuck recovery</span><span>frame rate</span></div>
+              <p><strong>70+</strong> telemetry fields per sample</p>
+            </div>
+          </article>
+
+          <article class="deep-dive">
+            <div class="deep-copy"><p class="deep-index">03 · Cross-system design</p><h3>Death’s Decrees change rules safely</h3><p>Completing structures periodically produces filtered Decree offers. The manager removes duplicates, incompatible groups, and irrelevant weapon doctrines; accepted Decrees are limited to four and can later be replaced.</p><p>After a selection, the system rebuilds combined modifiers and refreshes player stats, weapons, enemies, spawning, HUD state, and specialized behaviors.</p></div>
+            <div class="tech-visual decree-visual" role="img" aria-label="Death's Decrees flow from a structure capture through offer filtering and selection to affected runtime systems.">
+              <p class="visual-label">Rule-change propagation</p>
+              <div class="decree-flow"><span>Structure captured</span><i>↓</i><span>Filter eligible offers</span><i>↓</i><span>Grant or replace</span><i>↓</i><span>Recompute consumers</span></div>
+              <div class="consumer-chips"><span>Player stats</span><span>Weapons</span><span>Enemies</span><span>Spawning</span><span>Rewards</span><span>HUD</span></div>
+            </div>
+          </article>
+
+          <article class="deep-dive reverse">
+            <div class="deep-copy"><p class="deep-index">04 · Runtime performance</p><h3>High-volume combat without constant allocation</h3><p>A reusable generic pooling layer supports enemies, projectiles, effects, and pickups. Pools can warm gradually, grow in batches, enforce capacity limits, and expose active, inactive, and total-created counts for diagnostics.</p><ul><li>Lifecycle callbacks reset state when objects enter or leave a pool</li><li>Staged warmup distributes creation work across frames</li><li>Spawn telemetry tracks caps, overflow, recycling, and despawning</li></ul></div>
+            <div class="tech-visual pool-visual" role="img" aria-label="Object pool lifecycle showing warmup, inactive objects, spawned objects, and returned objects.">
+              <p class="visual-label">Reusable object lifecycle</p>
+              <div class="pool-cycle"><span>Warmup</span><i>→</i><span>Inactive pool</span><i>→</i><span>Spawned</span><i>↩</i><span>Reset + return</span></div>
+              <div class="pool-monitor"><span>ACTIVE</span><b></b><b></b><b></b><b></b><b></b><b></b><span>RECYCLED</span></div>
+              <div class="consumer-chips"><span>Enemies</span><span>Projectiles</span><span>VFX</span><span>Pickups</span></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="detail-section wrap challenge-layout" id="architecture">
+      <div class="challenge-copy"><p class="eyebrow">Technical challenge</p><h2>Keeping hundreds of interactions understandable</h2><p>Reverse bullet-hell games quickly combine many weapons, upgrades, enemies, modifiers, and UI states. A change that looks isolated can affect several systems at once.</p><p>I addressed this by separating authored data from runtime state, centralizing stat recalculation, using reusable effects and interfaces, and building inspection tools alongside the gameplay features. This makes iteration faster and reduces the risk of silent balance or configuration errors.</p></div>
+      <figure class="detail-figure"><img src="/assets/reapkeep-gameplay.webp" alt="ReapKeep gameplay with the player surrounded by enemies."><figcaption>Gameplay readability under a high number of enemies and effects is a continuing design and performance focus.</figcaption></figure>
+    </section>
+
+    <section class="detail-section supporting-section">
+      <div class="wrap">
+        <div class="section-heading"><div><p class="eyebrow">Supporting architecture</p><h2>Systems that make the project complete</h2></div><p>The same emphasis on reusable data and explicit state extends beyond combat.</p></div>
+        <div class="support-grid">
+          <article><p class="card-label">Persistence</p><h3>Versioned profile saves</h3><p>JSON persistence includes migration logic, atomic temporary-file replacement, and backup recovery for progression, achievements, unlocks, and stage completion.</p></article>
+          <article><p class="card-label">Achievements</p><h3>Composable rule engine</h3><p>Stateless ScriptableObject conditions combine through All/Any rules and evaluate from event-driven telemetry with progress reporting.</p></article>
+          <article><p class="card-label">Interface</p><h3>Stack-based UI navigation</h3><p>Scene-aware panel routing supports animated transitions, prewarming, covered-panel optimization, input focus, and controller navigation.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="detail-section wrap">
+      <div class="section-heading"><div><p class="eyebrow">Selected systems</p><h2>A connected production foundation</h2></div></div>
+      <div class="feature-list">
+        <article><h3>Four playable characters</h3><p>Distinct mechanics and HUD feedback designed to create different run identities.</p></article>
+        <article><h3>Weapons and evolutions</h3><p>Data-driven upgrade paths, requirements, merged evolutions, and runtime modifier support.</p></article>
+        <article><h3>Death’s Decrees</h3><p>Optional global rule changes that trade advantages against new risks during a run.</p></article>
+        <article><h3>Encounter pipeline</h3><p>Forty spawn phases, timed events, minibosses, boss behaviors, and difficulty progression.</p></article>
+        <article><h3>Persistent progression</h3><p>Unlocks, powerups, achievements, collection records, bestiary data, and run summaries.</p></article>
+        <article><h3>Developer tooling</h3><p>Content importers, debug windows, audits, asset organization, and repeatable simulations.</p></article>
+      </div>
+    </section>
+
+    <nav class="project-next wrap" aria-label="Other projects"><a href="/projects/light-in-the-dark/"><span>Next case study</span><strong>Light in the Dark →</strong></a></nav>
+  </main>
+  <footer class="wrap"><p>© <span data-year>2026</span> Garrett Goodwin</p><p><a href="/projects/">All projects</a> · <a href="mailto:garrett.w.goodwin@gmail.com">Contact</a></p></footer>
+</body>
+</html>

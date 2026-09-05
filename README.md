@@ -1,15 +1,7 @@
-# My Portfolio Website
+# Garrett Goodwin — Game Development Portfolio
 
-Welcome to my portfolio website! This website showcases my work in game development and design.
+Portfolio website for Garrett Goodwin, a software engineer and game developer specializing in Unity and C#.
 
-### About
+The site includes detailed project case studies for ReapKeep, Upturn, and Light in the Dark, along with selected prototypes and professional experience.
 
-This website was created using HTML, CSS, and JavaScript. It is hosted on GitHub Pages and can be accessed [here.](garrettgoodwin.github.io)
-
-### Contact
-
-If you have any questions or would like to discuss potential collaborations, please feel free to reach out to me at garrett.w.goodwin@gmail.com
-
-### License
-
-This project is licensed under the MIT License.
+Live site: https://garrettgoodwin.github.io/
