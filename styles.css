@@ -186,8 +186,9 @@ footer a { color: #aeb5bf; text-underline-offset: 4px; }
 .portfolio-copy h3 a { text-decoration: none; }
 .portfolio-copy > p { color: var(--muted); }
 .project-kicker { display: flex; flex-wrap: wrap; gap: 8px 22px; color: #8e96a3; font-size: .74rem; font-weight: 800; letter-spacing: .07em; text-transform: uppercase; }
-.archive-section { background: var(--bg-soft); border-block: 1px solid rgba(255,255,255,.05); }
+.game-jam-section { background: var(--bg-soft); border-block: 1px solid rgba(255,255,255,.05); }
 .archive-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+.game-jam-grid { grid-template-columns: repeat(2,1fr); gap: 22px; }
 .archive-card { overflow: hidden; border: 1px solid var(--line); border-radius: 11px; background: var(--panel); }
 .archive-card img { width: 100%; aspect-ratio: 16/9; object-fit: cover; image-rendering: auto; }
 .archive-media { display: block; overflow: hidden; }
@@ -197,6 +198,17 @@ footer a { color: #aeb5bf; text-underline-offset: 4px; }
 .archive-card h3 a:hover, .archive-card h3 a:focus-visible { color: #fff; text-decoration: underline; text-underline-offset: 4px; }
 .archive-card-featured { border-color: #3b3340; }
 .archive-card-featured .archive-media img { object-fit: contain; background: #090b0f; }
+.game-jam-card { border-color: #493746; }
+.game-jam-card .archive-media img { aspect-ratio: 16/8.25; object-fit: contain; background: #090b0f; }
+.game-jam-grid .game-jam-card > div { padding: 24px; }
+.game-jam-card h3 { font-size: 1.4rem; }
+.prototype-section { padding-top: 82px; }
+.prototype-heading { margin-bottom: 32px; }
+.prototype-grid { gap: 12px; }
+.prototype-grid .archive-card img { aspect-ratio: 16/8; object-fit: contain; background: #090b0f; }
+.prototype-grid .archive-card > div { padding: 16px; }
+.prototype-grid .archive-card h3 { font-size: 1.02rem; }
+.prototype-grid .archive-card p:not(.card-label) { min-height: 48px; margin-bottom: 11px; font-size: .8rem; }
 .archive-card > div { padding: 19px; }
 .archive-card h3 { margin-bottom: 8px; font-size: 1.13rem; }
 .archive-card p:not(.card-label) { min-height: 54px; margin: 0 0 14px; color: var(--muted); font-size: .86rem; line-height: 1.55; }
