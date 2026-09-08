@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b0d12">
+  <meta name="description" content="Punch Back game-jam case study by Garrett Goodwin, covering mechanic-first level design, rapid Unity development, and shipping within 48 hours.">
+  <title>Punch Back Case Study | Garrett Goodwin</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/script.js" defer></script>
+</head>
+<body class="subpage project-detail punch-back-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header" data-header>
+    <a class="brand" href="/" aria-label="Garrett Goodwin home"><span class="brand-mark">GG</span><span>Garrett Goodwin</span></a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav"><span></span><span></span><span></span><span class="sr-only">Open navigation</span></button>
+    <nav id="site-nav" aria-label="Primary"><a class="active" href="/projects/">Projects</a><a href="/#experience">Experience</a><a href="/#about">About</a><a href="https://github.com/garrettgoodwin" target="_blank" rel="noreferrer">GitHub ↗</a><a class="nav-contact" href="mailto:garrett.w.goodwin@gmail.com">Contact</a></nav>
+  </header>
+
+  <main id="main">
+    <section class="detail-hero wrap">
+      <a class="back-link" href="/projects/">← All projects</a>
+      <div class="detail-heading">
+        <div>
+          <p class="eyebrow">Game jam project · August 2021</p>
+          <h1>Punch Back</h1>
+          <p class="detail-lede">A short speedrunning platformer where the player must strike an opponent—and strategically use the returning punch—to traverse each obstacle.</p>
+        </div>
+        <div class="detail-actions"><a class="button primary" href="https://goodwingames.itch.io/punch-back" target="_blank" rel="noreferrer">Play on itch.io ↗</a></div>
+      </div>
+      <div class="hero-frame hero-frame-contained punch-back-hero-frame"><img src="/assets/archive/punch-back.webp" alt="Punch Back title artwork showing the pink opponent punching the player."></div>
+      <dl class="fact-bar">
+        <div><dt>Role</dt><dd>Solo Developer</dd></div>
+        <div><dt>Format</dt><dd>48-hour game jam</dd></div>
+        <div><dt>Technology</dt><dd>Unity · C#</dd></div>
+        <div><dt>Result</dt><dd>19th overall</dd></div>
+      </dl>
+      <nav class="case-nav" aria-label="Punch Back case study sections"><a href="#overview">Overview</a><a href="#mechanic">Core mechanic</a><a href="#level-design">Level design</a><a href="#process">Process</a><a href="#takeaways">Takeaways</a></nav>
+    </section>
+
+    <section class="detail-section wrap two-column" id="overview">
+      <div><p class="eyebrow">Overview</p><h2>Turning “The Golden Rule” into play</h2></div>
+      <div class="prose">
+        <p>Punch Back was created for the Full-Time Game Dev Game Jam and was my first game-jam submission. The theme was “The Golden Rule,” which I interpreted mechanically: the player punches a pink opponent and needs that opponent to return the action.</p>
+        <p>The result is a compact platforming challenge in which combat is also traversal. Rather than defeating the opponent, the player positions it, triggers its response, and uses the resulting force to reach the finish quickly.</p>
+      </div>
+    </section>
+
+    <section class="detail-section tinted-section" id="mechanic">
+      <div class="wrap">
+        <div class="section-heading">
+          <div><p class="eyebrow">Core mechanic</p><h2>Every punch creates the next move</h2></div>
+          <p>A single reciprocal interaction drives the movement challenge, level objectives, and speedrunning decisions.</p>
+        </div>
+        <div class="loop-grid four-step" aria-label="Punch Back gameplay loop">
+          <article><span>01</span><h3>Read the obstacle</h3><p>Identify where the player and pink opponent need to be positioned.</p></article>
+          <article><span>02</span><h3>Move the opponent</h3><p>Punch the opponent toward a switch, platform, or useful angle.</p></article>
+          <article><span>03</span><h3>Invite the return hit</h3><p>Stand where the opponent’s response will create useful knockback.</p></article>
+          <article><span>04</span><h3>Reach the finish</h3><p>Use the resulting movement to clear the obstacle as quickly as possible.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="detail-section wrap" id="level-design">
+      <div class="section-heading">
+        <div><p class="eyebrow">Level design</p><h2>Three applications of one rule</h2></div>
+        <p>I reused the central interaction in different spatial problems instead of introducing unrelated mechanics during the jam.</p>
+      </div>
+      <div class="punch-level-grid">
+        <figure><img src="/assets/punch-back/pressure-plates.webp" alt="The player and pink opponent positioned near separate pressure plates." loading="lazy"><figcaption><strong>Shared pressure plates</strong><span>Both characters must be directed onto separate switches, turning the opponent into part of the solution.</span></figcaption></figure>
+        <figure><img src="/assets/punch-back/moving-platform.webp" alt="The player and pink opponent standing near a cooperative moving platform." loading="lazy"><figcaption><strong>Cooperative platform</strong><span>The platform depends on both characters, so punch direction and final positioning matter.</span></figcaption></figure>
+        <figure><img src="/assets/punch-back/wall-climb.webp" alt="The player and pink opponent beneath a vertical wall obstacle." loading="lazy"><figcaption><strong>Punch-assisted wall climb</strong><span>The player intentionally receives a return punch and converts its knockback into vertical progress.</span></figcaption></figure>
+      </div>
+    </section>
+
+    <section class="detail-section visual-section" id="process">
+      <div class="wrap jam-result-layout">
+        <div class="jam-process-copy">
+          <p class="eyebrow">Development process</p>
+          <h2>Designing and shipping in 48 hours</h2>
+          <p>The time limit forced me to move quickly from theme interpretation to a playable level. I implemented the central interaction first, then built obstacles that reused it in different ways.</p>
+          <p>I completed fewer levels than originally planned, but submitting the project gave me direct experience with prioritization, finishing under a deadline, receiving player feedback, and evaluating my work alongside other interpretations of the same theme.</p>
+          <div class="jam-callout"><strong>19th overall</strong><span>8th for theme · 13th for mechanics</span></div>
+        </div>
+        <div class="jam-evidence">
+          <figure><img src="/assets/punch-back/golden-rule.webp" alt="The Full-Time Game Dev Game Jam 2021 theme: The Golden Rule." loading="lazy"><figcaption>The prompt that led to the reciprocal-punch mechanic.</figcaption></figure>
+          <figure><img src="/assets/punch-back/jam-results.webp" alt="Punch Back game-jam results showing 19th overall, 8th for theme, and 13th for mechanics." loading="lazy"><figcaption>The submitted build ranked especially well for its use of the theme and central mechanic.</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="detail-section wrap" id="takeaways">
+      <div class="section-heading"><div><p class="eyebrow">Takeaways</p><h2>What the game jam taught me</h2></div></div>
+      <div class="feature-list three-up">
+        <article><h3>Build around one rule</h3><p>A focused mechanic can support multiple challenges when each level changes how the player applies it.</p></article>
+        <article><h3>Scope to the deadline</h3><p>A smaller finished experience communicates more than a larger collection of incomplete ideas.</p></article>
+        <article><h3>Ship and seek feedback</h3><p>Submitting the game created a concrete result and exposed the design to perspectives I could not produce alone.</p></article>
+      </div>
+    </section>
+
+    <nav class="project-next wrap" aria-label="Other projects"><a href="/projects/upturn/"><span>Featured case study</span><strong>Explore Upturn →</strong></a></nav>
+  </main>
+  <footer class="wrap"><p>© <span data-year>2026</span> Garrett Goodwin</p><p><a href="/projects/">All projects</a> · <a href="mailto:garrett.w.goodwin@gmail.com">Contact</a></p></footer>
+</body>
+</html>
