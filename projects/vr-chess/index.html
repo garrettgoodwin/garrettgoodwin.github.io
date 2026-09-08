@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b0d12">
+  <meta name="description" content="VR Chess prototype snapshot by Garrett Goodwin, covering multiplayer virtual reality, direct object interaction, and spatial locomotion in Unity.">
+  <title>VR Chess Prototype | Garrett Goodwin</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/script.js" defer></script>
+</head>
+<body class="subpage project-detail vr-chess-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header" data-header>
+    <a class="brand" href="/" aria-label="Garrett Goodwin home"><span class="brand-mark">GG</span><span>Garrett Goodwin</span></a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav"><span></span><span></span><span></span><span class="sr-only">Open navigation</span></button>
+    <nav id="site-nav" aria-label="Primary"><a class="active" href="/projects/">Projects</a><a href="/#experience">Experience</a><a href="/#about">About</a><a href="https://github.com/garrettgoodwin" target="_blank" rel="noreferrer">GitHub ↗</a><a class="nav-contact" href="mailto:garrett.w.goodwin@gmail.com">Contact</a></nav>
+  </header>
+
+  <main id="main">
+    <section class="detail-hero wrap">
+      <a class="back-link" href="/projects/">← All projects</a>
+      <div class="detail-heading">
+        <div>
+          <p class="eyebrow">Prototype snapshot · Independent project</p>
+          <h1>VR Chess</h1>
+          <p class="detail-lede">A multiplayer virtual-reality experiment that turns a familiar board game into a spatial interaction challenge inside a stylized 3D environment.</p>
+        </div>
+      </div>
+      <div class="hero-frame vr-chess-hero-frame"><img src="/assets/vr-chess/gameplay.webp" alt="First-person VR Chess view with tracked hands positioned over a three-dimensional chessboard."></div>
+      <dl class="fact-bar">
+        <div><dt>Role</dt><dd>Gameplay Programmer</dd></div>
+        <div><dt>Focus</dt><dd>First VR project</dd></div>
+        <div><dt>Technology</dt><dd>Unity · C#</dd></div>
+        <div><dt>Format</dt><dd>Multiplayer prototype</dd></div>
+      </dl>
+      <nav class="case-nav" aria-label="VR Chess project sections"><a href="#overview">Overview</a><a href="#systems">Interaction systems</a><a href="#takeaway">Takeaway</a></nav>
+    </section>
+
+    <section class="detail-section wrap two-column" id="overview">
+      <div><p class="eyebrow">Overview</p><h2>Learning interaction through a familiar game</h2></div>
+      <div class="prose">
+        <p>VR Chess was my first virtual-reality project. I used chess as a recognizable foundation so I could focus the prototype on the unfamiliar engineering problems: how players move through the space, reach for objects, and manipulate pieces with tracked controls.</p>
+        <p>The multiplayer format also reframed a traditional two-player game as a shared virtual place. The goal was not to reinvent chess, but to explore how physical presence and hand-driven interaction change the experience of playing it.</p>
+      </div>
+    </section>
+
+    <section class="detail-section tinted-section" id="systems">
+      <div class="wrap">
+        <div class="section-heading">
+          <div><p class="eyebrow">Interaction systems</p><h2>Making the board usable in VR</h2></div>
+          <p>The prototype combines direct object handling with two forms of movement so players can comfortably position themselves around the board.</p>
+        </div>
+        <div class="system-grid three-up">
+          <article><span>01</span><h3>Select and hold</h3><p>Players target a chess piece or environmental object with a tracked controller and maintain control while repositioning it.</p></article>
+          <article><span>02</span><h3>Drop and interact</h3><p>Objects can be released back into the scene, supporting the tactile pick-up-and-place behavior expected from tabletop play.</p></article>
+          <article><span>03</span><h3>Move through the space</h3><p>Joystick locomotion and teleport movement provide different ways to change position within the virtual environment.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="detail-section wrap two-column" id="takeaway">
+      <div><p class="eyebrow">Takeaway</p><h2>Designing for hands and space</h2></div>
+      <div class="prototype-copy">
+        <p class="prototype-summary">VR Chess introduced me to development concerns that are less prominent in traditional desktop games: interaction reach, controller mapping, object readability, player orientation, and locomotion comfort.</p>
+        <ul class="build-list">
+          <li><strong>Physical affordances</strong><span>Interactable pieces need clear targeting, reliable selection, and predictable release behavior.</span></li>
+          <li><strong>Spatial readability</strong><span>The board, pieces, and hands must remain legible from a moving first-person viewpoint.</span></li>
+          <li><strong>Comfort options</strong><span>Supporting both continuous and teleport movement acknowledges different VR navigation preferences.</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <nav class="project-next wrap" aria-label="Other projects"><a href="/projects/swingy-spider/"><span>Another prototype snapshot</span><strong>Explore Swingy Spider →</strong></a></nav>
+  </main>
+  <footer class="wrap"><p>© <span data-year>2026</span> Garrett Goodwin</p><p><a href="/projects/">All projects</a> · <a href="mailto:garrett.w.goodwin@gmail.com">Contact</a></p></footer>
+</body>
+</html>
