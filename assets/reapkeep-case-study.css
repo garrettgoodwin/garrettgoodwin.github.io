@@ -1,0 +1,120 @@
+/* ReapKeep only: preserve the shared portfolio layout and other case studies. */
+.reapkeep-page .eyebrow,
+.reapkeep-page .case-nav a,
+.reapkeep-page .fact-bar dt { font-size: .875rem; }
+.reapkeep-page .fact-bar dt { color: var(--muted); }
+.reapkeep-page .fact-bar dd { font-size: 1rem; }
+.reapkeep-page .prose p,
+.reapkeep-page .challenge-copy p { font-size: 1rem; }
+.reapkeep-page :is(section, article, #contribution)[id] { scroll-margin-top: 110px; }
+.reapkeep-page code {
+  font: .875em/1.65 ui-monospace, SFMono-Regular, Consolas, monospace;
+  overflow-wrap: anywhere;
+}
+.reapkeep-page a:focus-visible,
+.reapkeep-page summary:focus-visible,
+.reapkeep-page [tabindex="0"]:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 5px;
+}
+.reapkeep-page .rk-scope {
+  border-left: 2px solid var(--accent);
+  padding-left: 18px;
+  margin-top: 28px;
+  font-size: .875rem;
+}
+.rk-table-scroll { overflow-x: auto; }
+.rk-architecture-table { width: 100%; border-collapse: collapse; text-align: left; }
+.rk-architecture-table caption {
+  text-align: left; color: var(--muted); font-size: .875rem;
+  padding-bottom: 16px;
+}
+.rk-architecture-table th,
+.rk-architecture-table td { padding: 20px 18px; border-bottom: 1px solid var(--line); vertical-align: top; }
+.rk-architecture-table thead { background: var(--panel); }
+.rk-architecture-table thead th { font-size: .875rem; }
+.rk-architecture-table tbody th { width: 22%; font-weight: 650; }
+.rk-architecture-table td { color: var(--muted); }
+.rk-architecture-table td:nth-child(2) { width: 32%; color: #dce0e5; }
+.reapkeep-page .rk-caption {
+  color: var(--muted); font-size: .875rem; line-height: 1.65; margin: 18px 0 0;
+}
+.rk-studies { border-top: 1px solid var(--line); }
+.rk-study {
+  display: grid; grid-template-columns: 1fr 1fr; align-items: start;
+  gap: 64px; padding: 72px 0; border-bottom: 1px solid var(--line);
+}
+.rk-study > *, .rk-tools > * { min-width: 0; }
+.rk-study h3 { font-size: clamp(1.65rem, 2.7vw, 2.35rem); letter-spacing: -.025em; }
+.rk-study-copy > p { color: var(--muted); margin: 0 0 20px; }
+.rk-study-copy > .eyebrow { color: var(--accent); }
+.rk-study-copy strong { color: var(--text); font-weight: 650; }
+.rk-study-copy .rk-tradeoff { padding-top: 18px; border-top: 1px solid var(--line); }
+.rk-source { margin-top: 24px; border-top: 1px solid var(--line); }
+.rk-source summary {
+  color: #dce0e5; font-size: .875rem; font-weight: 650;
+  cursor: pointer; padding: 16px 0;
+}
+.rk-source summary:hover { color: #ff81b0; }
+.rk-source ul { padding-left: 20px; margin-top: 0; }
+.rk-source li, .rk-source p { color: var(--muted); font-size: .875rem; }
+.rk-source li + li { margin-top: 12px; }
+.rk-source code { font-size: .8125rem; }
+.rk-diagram { margin: 0; padding: 26px; border: 1px solid var(--line); background: var(--bg-soft); border-radius: 10px; }
+.rk-diagram figcaption { color: #dce0e5; font-size: .875rem; font-weight: 650; margin-bottom: 24px; }
+.rk-flow { list-style: none; counter-reset: steps; padding: 0; margin: 0; }
+.rk-flow li { position: relative; counter-increment: steps; padding: 20px 18px 20px 54px; border: 1px solid var(--line); background: var(--panel); border-radius: 6px; }
+.rk-flow li::before {
+  content: counter(steps, decimal-leading-zero); position: absolute; top: 20px; left: 16px;
+  color: var(--accent); font-size: .875rem; font-weight: 700;
+}
+.rk-flow li + li { margin-top: 30px; }
+.rk-flow li + li::after { content: "↓"; position: absolute; top: -30px; left: 24px; line-height: 28px; color: var(--muted); }
+.rk-flow strong, .rk-node strong, .rk-branches strong, .rk-read-path strong { display: block; line-height: 1.45; }
+.rk-flow span, .rk-node > span, .rk-branches li > span:last-child, .rk-read-path > span:last-child {
+  display: block; color: var(--muted); font-size: .875rem; margin-top: 6px; line-height: 1.6;
+}
+.rk-diagram .rk-emphasis { border-color: #835069; background: #21151e; }
+.rk-node { padding: 18px; border: 1px solid var(--line); border-radius: 6px; background: var(--panel); }
+.rk-connector { margin: 0; text-align: center; line-height: 30px; color: var(--muted); }
+.rk-branches {
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px;
+  list-style: none; padding: 25px 0 0; margin: 0;
+}
+.rk-branches li { position: relative; padding: 15px 12px; border-top: 2px solid #835069; background: var(--panel); }
+.rk-branches li::before { content: ""; height: 25px; width: 1px; background: #835069; position: absolute; top: -27px; left: 50%; }
+.rk-branches strong { font-size: .9375rem; }
+.rk-path-label { display: block; color: #ff9abe; font-size: .875rem; line-height: 1.5; margin-bottom: 8px; }
+.rk-read-path { margin-top: 20px; padding: 18px; border: 1px dashed #626b79; border-radius: 6px; }
+.rk-read-path strong { font-size: .9375rem; }
+.rk-return { color: #ff9abe; font-size: .875rem; margin: 20px 0 0; }
+.reapkeep-page .rk-gameplay { padding-top: 0; }
+.reapkeep-page .detail-figure figcaption { font-size: .875rem; color: var(--muted); }
+.rk-tools { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; }
+.rk-tools h3 { font-size: 1.5rem; letter-spacing: -.02em; }
+.rk-tools article > p { color: var(--muted); }
+.rk-notes { border-top: 1px solid var(--line); }
+.rk-notes details { border-bottom: 1px solid var(--line); }
+.rk-notes summary { cursor: pointer; padding: 24px 0; font-weight: 650; }
+.rk-notes summary:hover { color: #ff81b0; }
+.rk-notes p { max-width: 850px; color: var(--muted); margin: 0 0 24px; }
+.rk-review-note { font-size: .875rem; color: var(--muted); margin: 32px 0 0; max-width: 850px; }
+@media (max-width: 1050px) {
+  .rk-study { gap: 36px; }
+  .rk-diagram { padding: 20px; }
+  .rk-branches { grid-template-columns: 1fr; padding-top: 0; }
+  .rk-branches li { margin-top: 20px; }
+  .rk-branches li::before { height: 20px; top: -22px; }
+}
+@media (max-width: 800px) {
+  .rk-study, .rk-tools { grid-template-columns: 1fr; gap: 32px; }
+  .rk-study { padding: 52px 0; }
+  .rk-architecture-table th, .rk-architecture-table td { padding: 16px 12px; }
+  .rk-architecture-table { min-width: 600px; }
+  .rk-tools article + article { border-top: 1px solid var(--line); padding-top: 32px; }
+}
+@media (max-width: 480px) {
+  .rk-diagram { padding: 16px; }
+  .rk-flow li { padding-right: 14px; }
+  .reapkeep-page .fact-bar div { padding: 16px; }
+}

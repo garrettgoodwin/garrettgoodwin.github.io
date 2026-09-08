@@ -4,12 +4,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#0b0d12">
-  <meta name="description" content="ReapKeep development case study by solo developer Garrett Goodwin.">
+  <meta name="description" content="ReapKeep by Garrett Goodwin: a Unity development case study covering weapon stat pipelines, run modifiers, enemy pooling, and balancing tools.">
   <title>ReapKeep Case Study | Garrett Goodwin</title>
   <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/assets/reapkeep-case-study.css">
   <script src="/script.js" defer></script>
 </head>
-<body class="subpage project-detail">
+<body class="subpage project-detail reapkeep-page">
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header" data-header>
     <a class="brand" href="/" aria-label="Garrett Goodwin home"><span class="brand-mark">GG</span><span>Garrett Goodwin</span></a>
@@ -21,109 +22,140 @@
     <section class="detail-hero wrap">
       <a class="back-link" href="/projects/">← All projects</a>
       <div class="detail-heading">
-        <div><p class="eyebrow">Solo game development · 2025–Present</p><h1>ReapKeep</h1><p class="detail-lede">A reverse bullet-hell roguelike about shaping a run through weapons, characters, progression, and dangerous rule-changing choices.</p></div>
+        <div><p class="eyebrow">Solo development · January 2025–Present</p><h1>ReapKeep</h1><p class="detail-lede">A reverse bullet-hell roguelike built around evolving weapons, escalating encounters, and choices that change the rules of a run.</p></div>
         <div class="detail-actions"><a class="button primary" href="https://reapkeep.garrett-w-goodwin.chatgpt.site" target="_blank" rel="noreferrer">Visit game website ↗</a></div>
       </div>
       <div class="hero-frame"><img src="/assets/reapkeep-key-art.webp" alt="ReapKeep key artwork with the Reaper and masked enemies."></div>
       <dl class="fact-bar">
         <div><dt>Role</dt><dd>Solo Developer</dd></div>
-        <div><dt>Platform</dt><dd>PC · Steam</dd></div>
-        <div><dt>Technology</dt><dd>Unity · C# · URP</dd></div>
-        <div><dt>Focus</dt><dd>Gameplay systems · Tools</dd></div>
+        <div><dt>Status</dt><dd>In development</dd></div>
+        <div><dt>Technology</dt><dd>Unity · C#</dd></div>
+        <div><dt>Release target</dt><dd>PC · Planned for Steam</dd></div>
       </dl>
-      <nav class="case-nav" aria-label="Case study sections"><a href="#overview">Overview</a><a href="#contribution">Contribution</a><a href="#engineering">Engineering</a><a href="#architecture">Architecture</a></nav>
+      <nav class="case-nav" aria-label="Case study sections"><a href="#overview">Overview</a><a href="#architecture">Architecture</a><a href="#engineering">Systems in depth</a><a href="#tooling">Development tools</a></nav>
     </section>
 
     <section class="detail-section wrap two-column" id="overview">
-      <div><p class="eyebrow">Overview</p><h2>Building a full game, not only a prototype</h2></div>
-      <div class="prose"><p>ReapKeep is my largest independent project. I own its design, programming, content pipeline, interface, balancing tools, technical documentation, and release planning. A typical run lasts 15 minutes and combines automatic combat with character mechanics, evolving weapons, escalating encounters, and Death’s Decrees that alter the rules of the current run.</p><p>The central engineering goal is to keep those systems expandable. New weapons, items, enemies, rewards, and encounters are authored through data rather than being hard-coded into individual scenes.</p></div>
+      <div><p class="eyebrow">Overview</p><h2>Making a growing set of systems work together</h2></div>
+      <div class="prose" id="contribution"><p>ReapKeep is my largest independent project. As its solo developer, I work across gameplay programming, game design, UI, content authoring, and development tools.</p><p>The engineering challenge is interaction: a new item can change weapon behavior, a Decree can affect enemies already on screen, and a recycled enemy must start its next life in a clean state. These are three examples of how I handle those boundaries.</p><p class="rk-scope">The walkthrough below is based on the current C# implementation. The game is still in development; source code remains private.</p></div>
     </section>
 
-    <section class="detail-section tinted-section" id="contribution">
+    <section class="detail-section tinted-section" id="architecture">
       <div class="wrap">
-        <div class="section-heading"><div><p class="eyebrow">My contribution</p><h2>Systems built for iteration</h2></div><p>The project connects moment-to-moment combat with the tools and validation needed to keep adding content safely.</p></div>
-        <div class="system-grid">
-          <article><span>01</span><h3>Combat architecture</h3><p>Weapons, runtime stat recalculation, character abilities, evolutions, projectiles, damage feedback, enemy behaviors, bosses, and encounter pacing.</p></article>
-          <article><span>02</span><h3>Data and authoring tools</h3><p>ScriptableObject-driven content, CSV importers, database organization, evolution-route builders, audits, and custom Unity editor workflows.</p></article>
-          <article><span>03</span><h3>Progression and interface</h3><p>Level-up rewards, inventories, achievements, collections, bestiary entries, save data, run history, menus, and controller-aware navigation.</p></article>
-          <article><span>04</span><h3>Performance and verification</h3><p>Object pooling, spawn-curve testing, automated damage benchmarks, diagnostic tools, and cross-system checks for a high-enemy-count game.</p></article>
+        <div class="section-heading"><div><p class="eyebrow">Architecture</p><h2>Authored data, runtime state, explicit updates</h2></div><p>ScriptableObjects describe content. Runtime systems calculate the current state. Direct calls and targeted events connect gameplay changes to their consumers.</p></div>
+        <div class="rk-table-scroll" role="region" aria-label="Selected architecture responsibilities" tabindex="0">
+          <table class="rk-architecture-table">
+            <caption>Selected responsibilities—not an exhaustive dependency graph</caption>
+            <thead><tr><th scope="col">Responsibility</th><th scope="col">Implementation</th><th scope="col">Boundary</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Content definition</th><td><code>WeaponConfig</code>, <code>CharacterTypeSO</code>, Decree data</td><td>Authored values and choices, separate from a weapon’s calculated runtime stats.</td></tr>
+              <tr><th scope="row">Startup and scenes</th><td><code>BootstrapManager</code>, <code>SceneController</code>, <code>GameManager</code></td><td>Create missing persistent managers, apply scene configuration, and signal run start/end.</td></tr>
+              <tr><th scope="row">Combat calculation</th><td><code>PlayerStatsPipeline</code>, <code>Weapon</code>, <code>WeaponManager</code></td><td>Build player stats, then calculate each owned weapon through ordered modifier stages.</td></tr>
+              <tr><th scope="row">Run-wide changes</th><td><code>DeathsDecreeManager</code>, <code>HexManager</code></td><td>Aggregate active rules; refresh affected actors and expose difficulty multipliers.</td></tr>
+              <tr><th scope="row">Enemy lifecycle</th><td><code>EnemyPool</code>, <code>EnemyStats</code></td><td>Prepare an inactive instance before activation, then return it for reuse.</td></tr>
+            </tbody>
+          </table>
         </div>
+        <p class="rk-caption">This is a manager-based Unity architecture, with both direct dependencies and events. The examples below show those connections rather than presenting every system as independent.</p>
       </div>
     </section>
 
     <section class="detail-section engineering-section" id="engineering">
       <div class="wrap">
-        <div class="section-heading engineering-heading"><div><p class="eyebrow">Engineering deep dives</p><h2>The systems behind the run</h2></div><p>These examples are drawn from the current Unity project and show how I approach scalability, iteration, validation, and runtime performance.</p></div>
+        <div class="section-heading engineering-heading"><div><p class="eyebrow">Engineering deep dives</p><h2>Three decisions in the implementation</h2></div><p>Each example connects a gameplay requirement to its data flow, update order, and tradeoffs.</p></div>
 
-        <div class="deep-dive-list">
-          <article class="deep-dive">
-            <div class="deep-copy"><p class="deep-index">01 · Content pipeline</p><h3>Author once, validate, then run</h3><p>Weapons, items, enemies, characters, achievements, and spawn phases are represented as reusable data assets. Custom Unity windows import balancing tables, validate required fields, build related assets, and audit evolution routes before content reaches a playtest.</p><ul><li>CSV validation can run without modifying assets</li><li>Per-level weapon rows feed centralized runtime calculations</li><li>Audit tools detect incomplete or conflicting configurations</li></ul></div>
-            <div class="tech-visual pipeline-visual" role="img" aria-label="Content pipeline from CSV balancing data through validation and ScriptableObject assets into Unity runtime systems.">
-              <p class="visual-label">Content authoring flow</p>
-              <div class="pipeline-flow"><span>CSV tables</span><i>→</i><span>Validation</span><i>→</i><span>Data assets</span><i>→</i><span>Runtime</span></div>
-              <div class="visual-stat-row"><div><strong>61</strong><span>Editor windows</span></div><div><strong>120</strong><span>ScriptableObject types</span></div><div><strong>10</strong><span>CSV/table tools</span></div></div>
-              <small>Counts from the reviewed script snapshot.</small>
+        <div class="rk-studies">
+          <article class="rk-study" id="weapon-pipeline">
+            <div class="rk-study-copy">
+              <p class="eyebrow">01 · Weapon stat pipeline</p><h3>Modifier order is part of the design</h3>
+              <p>Weapons can respond differently to player stats, but build-defining item effects still need to apply at their intended strength.</p>
+              <p>I calculate damage, cooldown, and critical chance from the authored level row, apply player modifiers, then blend that influence using each weapon’s scaling weights. Runtime item effects and Decree weapon modifiers come afterward.</p>
+              <p><strong>Why this matters:</strong> a weapon with low player-stat scaling does not also dilute those later item effects. Recalculation starts from authored values rather than repeatedly multiplying an already-modified result.</p>
+              <p class="rk-tradeoff">The order is explicit and inspectable, but adding a modifier means deciding where it belongs—not just appending another multiplier.</p>
+              <details class="rk-source"><summary>Implementation references</summary><ul><li><code>WeaponS/Core/WeaponConfig.cs</code> — level rows and per-stat scaling weights.</li><li><code>WeaponS/Core/Weapon.cs</code> — <code>RecomputeRuntimeStats()</code>.</li><li><code>WeaponS/Core/WeaponManager.cs</code> — player modifiers, runtime item effects, and final weapon doctrine modifiers.</li><li><code>Player/Stats/Pipeline/PlayerStatsPipeline.cs</code> and <code>Player/Core/Player.cs</code> — player stat construction and refresh notifications.</li></ul></details>
             </div>
+            <figure class="rk-diagram">
+              <figcaption>Weapon calculation · simplified execution order</figcaption>
+              <ol class="rk-flow">
+                <li><strong>Authored base / level row</strong><span>Start with fresh damage, cooldown, and crit values.</span></li>
+                <li><strong>Player stat influence</strong><span>Apply current player modifiers, then blend against the base using per-weapon weights.</span></li>
+                <li class="rk-emphasis"><strong>Runtime item + Decree effects</strong><span>Apply after the player-stat blend; weapon doctrines are applied last within this stage.</span></li>
+                <li><strong>Final bounds + weapon hooks</strong><span>Clamp core values, update damage variance, then call the weapon’s post-recompute hook.</span></li>
+              </ol>
+              <p class="rk-caption">Selected core stats. Individual weapons can extend the calculation through hooks.</p>
+            </figure>
           </article>
 
-          <article class="deep-dive reverse">
-            <div class="deep-copy"><p class="deep-index">02 · Automated verification</p><h3>Repeatable balance tests instead of guesswork</h3><p>A deterministic benchmark runner executes AI-controlled passes across multiple difficulty levels. It preserves the same seeded upgrade plan between runs and writes a detailed CSV timeline for comparison.</p><ul><li>Records enemy pressure, damage, progression, movement, and FPS</li><li>Tracks upgrade-sequence hashes and failed replay plans</li><li>Supports accelerated runs, invulnerability, and defined end conditions</li></ul></div>
-            <div class="tech-visual benchmark-visual" role="img" aria-label="Deterministic benchmark configuration and recorded telemetry categories.">
-              <div class="benchmark-top"><span>DIFFICULTY BENCHMARK</span><span>DETERMINISTIC</span></div>
-              <div class="benchmark-config"><div><span>Seed</span><strong>1337</strong></div><div><span>Default passes</span><strong>I · II · III</strong></div><div><span>Sample interval</span><strong>5 sec</strong></div><div><span>Export</span><strong>CSV</strong></div></div>
-              <div class="metric-stream"><span>enemy population</span><span>spawn pressure</span><span>damage dealt</span><span>player health</span><span>upgrade sequence</span><span>movement</span><span>stuck recovery</span><span>frame rate</span></div>
-              <p><strong>70+</strong> telemetry fields per sample</p>
+          <article class="rk-study" id="decree-system">
+            <div class="rk-study-copy">
+              <p class="eyebrow">02 · Death’s Decrees</p><h3>One choice, several kinds of update</h3>
+              <p>Death’s Decrees alter the current run. Offers exclude active duplicates, incompatible groups, and weapon doctrines that are not relevant to the player’s build. Granting or replacing a Decree also checks those constraints.</p>
+              <p>After a change, the manager rebuilds combined modifiers from neutral values. Player stats and weapons are recalculated; existing enemies refresh their scaling while preserving their current health ratio.</p>
+              <p><strong>Why this matters:</strong> the change affects the run already in progress, not only newly spawned actors. The HUD receives a change event, while difficulty calculations read the current spawn-rate and population multipliers when needed.</p>
+              <p class="rk-tradeoff">This uses both direct calls and events. Refreshing existing enemies currently includes a scene-wide lookup, so that path deserves profiling during crowded encounters.</p>
+              <details class="rk-source"><summary>Implementation references</summary><ul><li><code>Systems/DeathsDecrees/Runtime/DeathsDecreeManager.cs</code> — <code>BuildOffer()</code>, <code>Grant()</code>, <code>Replace()</code>, <code>CommitChange()</code>, and <code>RefreshAllRuntimeConsumers()</code>.</li><li><code>Systems/DeathsDecrees/Runtime/DeathsDecreeRuntimeModifiers.cs</code> — current aggregated multipliers.</li><li><code>StagesAndRuns/RunFlow/Difficulty/HexManager.cs</code> — spawn-rate and maximum-alive multiplier reads.</li><li><code>Systems/DeathsDecrees/UI/DeathsDecreeHud.cs</code> — subscribes to <code>ActiveDecreesChanged</code>.</li></ul></details>
             </div>
+            <figure class="rk-diagram rk-decree-map">
+              <figcaption>Decree change · selected consumers</figcaption>
+              <div class="rk-node"><strong>Grant / replace a Decree</strong><span>Validate the selection and update the active set.</span></div>
+              <p class="rk-connector" aria-hidden="true">↓</p>
+              <div class="rk-node rk-emphasis"><strong>CommitChange</strong><span>Rebuild combined modifiers, refresh actors, then notify listeners.</span></div>
+              <ul class="rk-branches">
+                <li><span class="rk-path-label">Direct refresh</span><strong>Player → weapons</strong><span>Rebuild stats and recalculate owned weapons.</span></li>
+                <li><span class="rk-path-label">Direct refresh</span><strong>Existing enemies</strong><span>Update scaling; preserve health ratio.</span></li>
+                <li><span class="rk-path-label">Change event</span><strong>Decree HUD</strong><span>Refresh the displayed active choices.</span></li>
+              </ul>
+              <div class="rk-read-path"><span class="rk-path-label">Separate read path</span><strong>HexManager ← current Decree multipliers</strong><span>Spawn-rate and population calculations read the aggregated state.</span></div>
+            </figure>
           </article>
 
-          <article class="deep-dive">
-            <div class="deep-copy"><p class="deep-index">03 · Cross-system design</p><h3>Death’s Decrees change rules safely</h3><p>Completing structures periodically produces filtered Decree offers. The manager removes duplicates, incompatible groups, and irrelevant weapon doctrines; accepted Decrees are limited to four and can later be replaced.</p><p>After a selection, the system rebuilds combined modifiers and refreshes player stats, weapons, enemies, spawning, HUD state, and specialized behaviors.</p></div>
-            <div class="tech-visual decree-visual" role="img" aria-label="Death's Decrees flow from a structure capture through offer filtering and selection to affected runtime systems.">
-              <p class="visual-label">Rule-change propagation</p>
-              <div class="decree-flow"><span>Structure captured</span><i>↓</i><span>Filter eligible offers</span><i>↓</i><span>Grant or replace</span><i>↓</i><span>Recompute consumers</span></div>
-              <div class="consumer-chips"><span>Player stats</span><span>Weapons</span><span>Enemies</span><span>Spawning</span><span>Rewards</span><span>HUD</span></div>
+          <article class="rk-study" id="enemy-lifecycle">
+            <div class="rk-study-copy">
+              <p class="eyebrow">03 · Enemy pooling</p><h3>Prepare the next life before enabling it</h3>
+              <p>Reusing an enemy is more than hiding and showing its GameObject. A previous life can leave changed scale, visual state, or combat configuration behind.</p>
+              <p>The dedicated enemy pool prepares each instance while inactive: it restores configured visual state, sets its position and rotation, and applies any supplied base-stat override before activation. Pool callbacks run next; a global freeze, if active, is applied afterward so those callbacks do not reset it.</p>
+              <p><strong>Why this matters:</strong> Unity activation callbacks see the prepared location and configuration. A guarded return path avoids returning the same instance twice, and configurable creation budgets limit how much runtime growth the pool permits in a frame.</p>
+              <p class="rk-tradeoff">Enemy pooling is its own implementation. The project also contains a generic <code>BasePool&lt;T&gt;</code> and a legacy pooler; these are not one universal pool. Reuse reduces repeated creation, but does not establish an allocation-free frame or a measured FPS gain.</p>
+              <details class="rk-source"><summary>Implementation references</summary><ul><li><code>Enemies/Pooling/EnemyPool.cs</code> — <code>SpawnEnemy()</code>, <code>Despawn()</code>, cached visual state, and runtime creation limits.</li><li><code>Shared/Pooling/Core/BasePool.cs</code> — separate generic pooling infrastructure with optional staged warmup.</li><li><code>Shared/Pooling/Components/PoolLink.cs</code> — generic-pool ownership and lifecycle callback support.</li></ul></details>
             </div>
-          </article>
-
-          <article class="deep-dive reverse">
-            <div class="deep-copy"><p class="deep-index">04 · Runtime performance</p><h3>High-volume combat without constant allocation</h3><p>A reusable generic pooling layer supports enemies, projectiles, effects, and pickups. Pools can warm gradually, grow in batches, enforce capacity limits, and expose active, inactive, and total-created counts for diagnostics.</p><ul><li>Lifecycle callbacks reset state when objects enter or leave a pool</li><li>Staged warmup distributes creation work across frames</li><li>Spawn telemetry tracks caps, overflow, recycling, and despawning</li></ul></div>
-            <div class="tech-visual pool-visual" role="img" aria-label="Object pool lifecycle showing warmup, inactive objects, spawned objects, and returned objects.">
-              <p class="visual-label">Reusable object lifecycle</p>
-              <div class="pool-cycle"><span>Warmup</span><i>→</i><span>Inactive pool</span><i>→</i><span>Spawned</span><i>↩</i><span>Reset + return</span></div>
-              <div class="pool-monitor"><span>ACTIVE</span><b></b><b></b><b></b><b></b><b></b><b></b><span>RECYCLED</span></div>
-              <div class="consumer-chips"><span>Enemies</span><span>Projectiles</span><span>VFX</span><span>Pickups</span></div>
-            </div>
+            <figure class="rk-diagram">
+              <figcaption>EnemyPool · reuse lifecycle</figcaption>
+              <ol class="rk-flow">
+                <li><strong>Take an inactive instance</strong><span>Reuse a pooled object, or create one within the configured budget.</span></li>
+                <li class="rk-emphasis"><strong>Prepare while inactive</strong><span>Restore state → place in the world → apply an optional stat override.</span></li>
+                <li><strong>Activate and initialize</strong><span>Enable → pool spawn callbacks → apply any active global freeze.</span></li>
+                <li><strong>Despawn and return</strong><span>Run return callbacks, disable, reparent, and put it back in the inactive pool.</span></li>
+              </ol>
+              <p class="rk-return">↶ The next spawn re-enters at the first step.</p>
+            </figure>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="detail-section wrap challenge-layout" id="architecture">
-      <div class="challenge-copy"><p class="eyebrow">Technical challenge</p><h2>Keeping hundreds of interactions understandable</h2><p>Reverse bullet-hell games quickly combine many weapons, upgrades, enemies, modifiers, and UI states. A change that looks isolated can affect several systems at once.</p><p>I addressed this by separating authored data from runtime state, centralizing stat recalculation, using reusable effects and interfaces, and building inspection tools alongside the gameplay features. This makes iteration faster and reduces the risk of silent balance or configuration errors.</p></div>
-      <figure class="detail-figure"><img src="/assets/reapkeep-gameplay.webp" alt="ReapKeep gameplay with the player surrounded by enemies."><figcaption>Gameplay readability under a high number of enemies and effects is a continuing design and performance focus.</figcaption></figure>
+    <section class="detail-section wrap challenge-layout rk-gameplay">
+      <div class="challenge-copy"><p class="eyebrow">In the game</p><h2>The systems meet on screen</h2><p>Weapons, enemy lifecycles, and difficulty modifiers come together during combat. Keeping that action readable is a continuing design focus as I develop the game.</p></div>
+      <figure class="detail-figure"><img src="/assets/reapkeep-gameplay.webp" alt="ReapKeep gameplay showing the player surrounded by enemies." loading="lazy"><figcaption>Development screenshot. Architecture diagrams above describe code paths; they are not performance measurements.</figcaption></figure>
     </section>
 
-    <section class="detail-section supporting-section">
+    <section class="detail-section tinted-section" id="tooling">
       <div class="wrap">
-        <div class="section-heading"><div><p class="eyebrow">Supporting architecture</p><h2>Systems that make the project complete</h2></div><p>The same emphasis on reusable data and explicit state extends beyond combat.</p></div>
-        <div class="support-grid">
-          <article><p class="card-label">Persistence</p><h3>Versioned profile saves</h3><p>JSON persistence includes migration logic, atomic temporary-file replacement, and backup recovery for progression, achievements, unlocks, and stage completion.</p></article>
-          <article><p class="card-label">Achievements</p><h3>Composable rule engine</h3><p>Stateless ScriptableObject conditions combine through All/Any rules and evaluate from event-driven telemetry with progress reporting.</p></article>
-          <article><p class="card-label">Interface</p><h3>Stack-based UI navigation</h3><p>Scene-aware panel routing supports animated transitions, prewarming, covered-panel optimization, input focus, and controller navigation.</p></article>
+        <div class="section-heading"><div><p class="eyebrow">Development tools</p><h2>Making changes easier to inspect</h2></div><p>Content tooling supports authoring; automated runs help gather evidence for balancing. Neither substitutes for playtesting.</p></div>
+        <div class="rk-tools">
+          <article><h3>Validate weapon tables before applying them</h3><p>The weapon CSV importer has separate validation and apply modes. It matches rows to weapon configurations and levels; applying changes records Unity Undo state and updates the data assets. Blank cells can leave existing values unchanged.</p><p class="rk-caption">Validation helps catch supported input and mapping problems. It is not a guarantee that every combination is balanced or valid.</p><details class="rk-source"><summary>Implementation reference</summary><p><code>WeaponS/Editor/WeaponStatsCsvImporter.cs</code></p></details></article>
+          <article><h3>Compare difficulty with a shared upgrade plan</h3><p>A benchmark runner automates difficulty passes using a shared seeded upgrade plan. It checks replay failures and exports a CSV timeline with enemy population, pressure, damage, progression, movement, and frame-rate samples.</p><p class="rk-caption">This controls part of the comparison, not the entire Unity simulation. No measured performance results are claimed here; the frame-rate field is a sample, not a percentile benchmark.</p><details class="rk-source"><summary>Implementation references</summary><p><code>DebugTools/Automation/Benchmarking/DifficultyBenchmarkRunner.cs</code></p><p><code>DebugTools/Automation/Benchmarking/DifficultyBenchmarkTelemetry.cs</code></p></details></article>
         </div>
       </div>
     </section>
 
-    <section class="detail-section wrap">
-      <div class="section-heading"><div><p class="eyebrow">Selected systems</p><h2>A connected production foundation</h2></div></div>
-      <div class="feature-list">
-        <article><h3>Four playable characters</h3><p>Distinct mechanics and HUD feedback designed to create different run identities.</p></article>
-        <article><h3>Weapons and evolutions</h3><p>Data-driven upgrade paths, requirements, merged evolutions, and runtime modifier support.</p></article>
-        <article><h3>Death’s Decrees</h3><p>Optional global rule changes that trade advantages against new risks during a run.</p></article>
-        <article><h3>Encounter pipeline</h3><p>Forty spawn phases, timed events, minibosses, boss behaviors, and difficulty progression.</p></article>
-        <article><h3>Persistent progression</h3><p>Unlocks, powerups, achievements, collection records, bestiary data, and run summaries.</p></article>
-        <article><h3>Developer tooling</h3><p>Content importers, debug windows, audits, asset organization, and repeatable simulations.</p></article>
+    <section class="detail-section wrap rk-supporting">
+      <div class="section-heading"><div><p class="eyebrow">Further implementation notes</p><h2>Beyond combat</h2></div><p>A few supporting systems, with their current boundaries.</p></div>
+      <div class="rk-notes">
+        <details><summary>Startup and scene ownership</summary><p><code>BootstrapManager</code> creates missing persistent managers. <code>SceneController</code> handles scene configuration and scene notifications; <code>GameManager</code> signals run lifecycle changes. Some managers subscribe to Unity scene events independently. Death’s Decrees has a separate scene bootstrap, so it is not simply another persistent bootstrap entry.</p></details>
+        <details><summary>Versioned profile persistence</summary><p><code>ProfileSaveStore</code> loads JSON, runs migration and clamping logic, and writes through a temporary file. Updating an existing save attempts file replacement with a backup, with a copy/move fallback. The current load path does not automatically recover from that backup; handling a corrupt primary save is an area for further hardening.</p></details>
+        <details><summary>Composable achievement rules</summary><p><code>AchievementRule</code> combines <code>AchievementConditionSO</code> assets with All/Any logic, allowing authored conditions to be reused across rules instead of giving every achievement a separate hard-coded check.</p></details>
       </div>
+      <p class="rk-review-note">Technical notes reviewed against the September 2026 script snapshot. Scene and prefab configuration, compiled behavior, and profiler results are outside the scope of this code walkthrough.</p>
     </section>
 
     <nav class="project-next wrap" aria-label="Other projects"><a href="/projects/light-in-the-dark/"><span>Next case study</span><strong>Light in the Dark →</strong></a></nav>
