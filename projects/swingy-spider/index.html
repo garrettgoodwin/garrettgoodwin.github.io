@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b0d12">
+  <meta name="description" content="Swingy Spider prototype snapshot by Garrett Goodwin, covering physics-driven movement and rapid Unity development for a 72-hour game jam.">
+  <title>Swingy Spider Prototype | Garrett Goodwin</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/script.js" defer></script>
+</head>
+<body class="subpage project-detail swingy-spider-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header" data-header>
+    <a class="brand" href="/" aria-label="Garrett Goodwin home"><span class="brand-mark">GG</span><span>Garrett Goodwin</span></a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav"><span></span><span></span><span></span><span class="sr-only">Open navigation</span></button>
+    <nav id="site-nav" aria-label="Primary"><a class="active" href="/projects/">Projects</a><a href="/#experience">Experience</a><a href="/#about">About</a><a href="https://github.com/garrettgoodwin" target="_blank" rel="noreferrer">GitHub ↗</a><a class="nav-contact" href="mailto:garrett.w.goodwin@gmail.com">Contact</a></nav>
+  </header>
+
+  <main id="main">
+    <section class="detail-hero wrap">
+      <a class="back-link" href="/projects/">← All projects</a>
+      <div class="detail-heading">
+        <div>
+          <p class="eyebrow">Prototype snapshot · January 2023</p>
+          <h1>Swingy Spider</h1>
+          <p class="detail-lede">A fast 2D survival game where every movement begins with a web: swing between anchor points, collect flies, and avoid lethal enemy bugs for as long as possible.</p>
+        </div>
+        <div class="detail-actions"><a class="button primary" href="https://goodwingames.itch.io/swingy-spider" target="_blank" rel="noreferrer">Download on itch.io ↗</a></div>
+      </div>
+      <div class="hero-frame swingy-hero-frame"><img src="/assets/swingy-spider/title-screen.webp" alt="Swingy Spider title screen showing the spider suspended from a web among flies and enemy bugs."></div>
+      <dl class="fact-bar">
+        <div><dt>Role</dt><dd>Solo Developer</dd></div>
+        <div><dt>Format</dt><dd>72-hour game jam</dd></div>
+        <div><dt>Technology</dt><dd>Unity · C#</dd></div>
+        <div><dt>Platform</dt><dd>Windows</dd></div>
+      </dl>
+      <nav class="case-nav" aria-label="Swingy Spider project sections"><a href="#overview">Overview</a><a href="#loop">Gameplay loop</a><a href="#implementation">Implementation</a><a href="#takeaway">Takeaway</a></nav>
+    </section>
+
+    <section class="detail-section wrap two-column" id="overview">
+      <div><p class="eyebrow">Overview</p><h2>Movement without a floor</h2></div>
+      <div class="prose">
+        <p>Swingy Spider was built for Mini Jam 123, which paired the theme “Web” with the required limitation “There is no ground.” I treated the limitation as the foundation of the controls: the player cannot rely on ordinary walking or platforming and must instead travel by firing and holding web strands.</p>
+        <p>The objective is intentionally immediate—collect as many flies as possible while navigating around hostile bugs. That simple goal kept the project achievable within the jam while giving the swinging mechanic a clear purpose.</p>
+      </div>
+    </section>
+
+    <section class="detail-section tinted-section" id="loop">
+      <div class="wrap">
+        <div class="section-heading">
+          <div><p class="eyebrow">Gameplay loop</p><h2>Swing, collect, survive</h2></div>
+          <p>The prototype combines momentum-based movement with quick decisions about safe routes and nearby targets.</p>
+        </div>
+        <div class="loop-grid swingy-loop" aria-label="Swingy Spider gameplay loop">
+          <article><span>01</span><h3>Attach a web</h3><p>Choose an anchor point and fire a thread to begin moving through open space.</p></article>
+          <article><span>02</span><h3>Control momentum</h3><p>Hold and release at the right time to redirect the spider through the arena.</p></article>
+          <article><span>03</span><h3>Collect flies</h3><p>Route each swing toward flies to increase the run’s score.</p></article>
+          <article><span>04</span><h3>Avoid enemy bugs</h3><p>Read approaching threats and change course before contact ends the attempt.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="detail-section wrap prototype-showcase" id="implementation">
+      <figure class="detail-figure"><img src="/assets/swingy-spider/gameplay.webp" alt="Swingy Spider gameplay showing the player moving through flies, blocks, and enemy bugs." loading="lazy"><figcaption>The arena keeps the player airborne while flies, obstacles, and moving threats compete for attention.</figcaption></figure>
+      <div class="prototype-copy">
+        <p class="eyebrow">What I built</p>
+        <h2>A focused physics prototype</h2>
+        <ul class="build-list">
+          <li><strong>Web-based movement</strong><span>A mouse-controlled attachment system that turns anchor selection and release timing into the primary controls.</span></li>
+          <li><strong>Airborne survival loop</strong><span>A scoring objective, lives, environmental blocks, and enemy bugs create risk without adding traditional ground movement.</span></li>
+          <li><strong>Complete jam build</strong><span>A title screen, readable controls, game states, and downloadable Windows release completed within the deadline.</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="detail-section visual-section" id="takeaway">
+      <div class="wrap two-column">
+        <div><p class="eyebrow">Takeaway</p><h2>Designing from a constraint</h2></div>
+        <div class="prose">
+          <p>This project reinforced how a strong limitation can produce the game’s identity rather than merely restrict it. By making the lack of ground central to movement, the jam prompt shaped the controls, level space, hazards, and scoring loop at the same time.</p>
+          <p>It also gave me practical experience tuning physics-driven controls under a short deadline, where small adjustments to responsiveness and momentum have an immediate effect on difficulty and player confidence.</p>
+        </div>
+      </div>
+    </section>
+
+    <nav class="project-next wrap" aria-label="Other projects"><a href="/projects/punch-back/"><span>Another game-jam project</span><strong>Explore Punch Back →</strong></a></nav>
+  </main>
+  <footer class="wrap"><p>© <span data-year>2026</span> Garrett Goodwin</p><p><a href="/projects/">All projects</a> · <a href="mailto:garrett.w.goodwin@gmail.com">Contact</a></p></footer>
+</body>
+</html>
