@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b0d12">
+  <meta name="description" content="Platformer prototype snapshot by Garrett Goodwin, covering character movement, combat, enemy encounters, and iterative Unity development.">
+  <title>Platformer Prototype | Garrett Goodwin</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/script.js" defer></script>
+</head>
+<body class="subpage project-detail platformer-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header" data-header>
+    <a class="brand" href="/" aria-label="Garrett Goodwin home"><span class="brand-mark">GG</span><span>Garrett Goodwin</span></a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav"><span></span><span></span><span></span><span class="sr-only">Open navigation</span></button>
+    <nav id="site-nav" aria-label="Primary"><a class="active" href="/projects/">Projects</a><a href="/#experience">Experience</a><a href="/#about">About</a><a href="https://github.com/garrettgoodwin" target="_blank" rel="noreferrer">GitHub ↗</a><a class="nav-contact" href="mailto:garrett.w.goodwin@gmail.com">Contact</a></nav>
+  </header>
+
+  <main id="main">
+    <section class="detail-hero wrap">
+      <a class="back-link" href="/projects/">← All projects</a>
+      <div class="detail-heading">
+        <div>
+          <p class="eyebrow">Prototype snapshot · Independent project</p>
+          <h1>Platformer</h1>
+          <p class="detail-lede">An unfinished Unity prototype about a small sorcerer fighting through a layered monochrome world, built to explore responsive platforming and combat.</p>
+        </div>
+      </div>
+      <div class="hero-frame platformer-hero-frame"><img src="/assets/platformer/gameplay.webp" alt="Platformer gameplay showing the sorcerer attacking across a layered rooftop environment."></div>
+      <dl class="fact-bar">
+        <div><dt>Role</dt><dd>Solo Developer</dd></div>
+        <div><dt>Status</dt><dd>Unfinished prototype</dd></div>
+        <div><dt>Technology</dt><dd>Unity · C#</dd></div>
+        <div><dt>Focus</dt><dd>Movement · Combat</dd></div>
+      </dl>
+      <nav class="case-nav" aria-label="Platformer project sections"><a href="#overview">Overview</a><a href="#systems">Gameplay systems</a><a href="#development">Development</a><a href="#takeaway">Takeaway</a></nav>
+    </section>
+
+    <section class="detail-section wrap two-column" id="overview">
+      <div><p class="eyebrow">Overview</p><h2>Building the beginning of a platformer</h2></div>
+      <div class="prose">
+        <p>I started this project during an ASU winter break with the goal of making a compact action platformer. The player controls a small sorcerer who moves through the environment, jumps between platforms, and uses a primary attack against enemies.</p>
+        <p>The prototype progressed far enough for me to begin programming its first boss encounter. As my available time decreased and my interest shifted toward VR development, I chose to stop production rather than overstate the project’s scope. The playable work remains a useful record of my early gameplay-programming development.</p>
+      </div>
+    </section>
+
+    <section class="detail-section tinted-section" id="systems">
+      <div class="wrap">
+        <div class="section-heading">
+          <div><p class="eyebrow">Gameplay systems</p><h2>A small but complete combat foundation</h2></div>
+          <p>The prototype established the essential systems needed to test traversal and encounters before expanding into a larger game.</p>
+        </div>
+        <div class="system-grid three-up">
+          <article><span>01</span><h3>Character movement</h3><p>Horizontal movement and jumping support navigation across multi-level platforms and gaps.</p></article>
+          <article><span>02</span><h3>Primary attack</h3><p>A player-controlled attack connects movement with enemy encounters and positioning decisions.</p></article>
+          <article><span>03</span><h3>Encounter progression</h3><p>Regular foes created the combat baseline, while early boss programming explored a larger structured challenge.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="detail-section visual-section" id="development">
+      <div class="wrap">
+        <div class="section-heading">
+          <div><p class="eyebrow">Development evidence</p><h2>From traversal to encounters</h2></div>
+          <p>These surviving development images show the playable environments, character movement, and combat work completed before production stopped.</p>
+        </div>
+        <div class="visual-gallery platformer-gallery">
+          <figure><div class="gallery-image"><img src="/assets/platformer/movement.webp" alt="The sorcerer jumping between platforms while enemies move overhead." loading="lazy"></div><figcaption><strong>Traversal testing</strong><span>Layered platforms create multiple heights and routes through the environment.</span></figcaption></figure>
+          <figure><div class="gallery-image"><img src="/assets/platformer/combat.webp" alt="The sorcerer encountering a dark enemy in an interior platforming area." loading="lazy"></div><figcaption><strong>Combat space</strong><span>An enclosed scene brings the player and enemy together for closer encounter testing.</span></figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="detail-section wrap two-column" id="takeaway">
+      <div><p class="eyebrow">Takeaway</p><h2>Learning when to change direction</h2></div>
+      <div class="prose">
+        <p>This project helped me practice the core loop of implementing, testing, and tuning character mechanics inside a real level. It also taught me that a prototype can still be valuable even when it does not become a finished release.</p>
+        <p>Choosing to stop allowed me to pursue VR development, while the systems and environments I completed became experience I carried into later projects.</p>
+      </div>
+    </section>
+
+    <nav class="project-next wrap" aria-label="Other projects"><a href="/projects/vr-chess/"><span>The project direction that followed</span><strong>Explore VR Chess →</strong></a></nav>
+  </main>
+  <footer class="wrap"><p>© <span data-year>2026</span> Garrett Goodwin</p><p><a href="/projects/">All projects</a> · <a href="mailto:garrett.w.goodwin@gmail.com">Contact</a></p></footer>
+</body>
+</html>
