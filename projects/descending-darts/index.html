@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b0d12">
+  <meta name="description" content="Descending Darts prototype snapshot by Garrett Goodwin, covering an endless survival loop, dash movement, animation, and early Unity development.">
+  <title>Descending Darts Prototype | Garrett Goodwin</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/script.js" defer></script>
+</head>
+<body class="subpage project-detail descending-darts-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header" data-header>
+    <a class="brand" href="/" aria-label="Garrett Goodwin home"><span class="brand-mark">GG</span><span>Garrett Goodwin</span></a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav"><span></span><span></span><span></span><span class="sr-only">Open navigation</span></button>
+    <nav id="site-nav" aria-label="Primary"><a class="active" href="/projects/">Projects</a><a href="/#experience">Experience</a><a href="/#about">About</a><a href="https://github.com/garrettgoodwin" target="_blank" rel="noreferrer">GitHub ↗</a><a class="nav-contact" href="mailto:garrett.w.goodwin@gmail.com">Contact</a></nav>
+  </header>
+
+  <main id="main">
+    <section class="detail-hero wrap">
+      <a class="back-link" href="/projects/">← All projects</a>
+      <div class="detail-heading">
+        <div>
+          <p class="eyebrow">Prototype snapshot · First Unity project</p>
+          <h1>Descending Darts</h1>
+          <p class="detail-lede">An endless survival game where a swift-footed knight must dodge an increasingly relentless barrage of falling arrows.</p>
+        </div>
+      </div>
+      <div class="hero-frame descending-darts-hero-frame"><img src="/assets/descending-darts/gameplay.webp" alt="Descending Darts gameplay with a knight running beneath several falling arrows."></div>
+      <dl class="fact-bar">
+        <div><dt>Role</dt><dd>Solo Developer</dd></div>
+        <div><dt>Milestone</dt><dd>First Unity project</dd></div>
+        <div><dt>Technology</dt><dd>Unity · C#</dd></div>
+        <div><dt>Genre</dt><dd>Endless survival</dd></div>
+      </dl>
+      <nav class="case-nav" aria-label="Descending Darts project sections"><a href="#overview">Overview</a><a href="#loop">Gameplay loop</a><a href="#development">Development</a><a href="#takeaway">Takeaway</a></nav>
+    </section>
+
+    <section class="detail-section wrap two-column" id="overview">
+      <div><p class="eyebrow">Overview</p><h2>Survival measured in seconds</h2></div>
+      <div class="prose">
+        <p>Descending Darts was the first game project I completed in Unity. The player moves along a constrained battlefield while arrows descend from above. Survival is intentionally impossible, shifting the goal from reaching an ending to improving how long each attempt lasts.</p>
+        <p>Its compact scope gave me a practical setting for learning how input, physics, animation, collision, game state, and visual feedback combine into a complete playable loop.</p>
+      </div>
+    </section>
+
+    <section class="detail-section tinted-section" id="loop">
+      <div class="wrap">
+        <div class="section-heading">
+          <div><p class="eyebrow">Gameplay loop</p><h2>Read, move, dash, repeat</h2></div>
+          <p>A small control set keeps the challenge centered on recognizing danger and committing to the right escape direction.</p>
+        </div>
+        <div class="loop-grid swingy-loop" aria-label="Descending Darts gameplay loop">
+          <article><span>01</span><h3>Track the barrage</h3><p>Watch the space above the knight and identify where incoming arrows will land.</p></article>
+          <article><span>02</span><h3>Choose a direction</h3><p>Move left or right to create space before the safest route closes.</p></article>
+          <article><span>03</span><h3>Commit to a dash</h3><p>Use the dash to escape immediate danger when ordinary movement is not enough.</p></article>
+          <article><span>04</span><h3>Extend the attempt</h3><p>Continue adapting as the barrage tests reaction speed and positioning.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="detail-section wrap" id="development">
+      <div class="section-heading">
+        <div><p class="eyebrow">Development</p><h2>Learning through iteration</h2></div>
+        <p>The project began with guided Unity coursework and developed into an extended exercise in adjusting the game until its movement and presentation matched my own goals.</p>
+      </div>
+      <div class="feature-list three-up">
+        <article><h3>Character design</h3><p>I repeatedly revised the knight and overall presentation as my visual understanding improved.</p></article>
+        <article><h3>Animation and movement</h3><p>Tuning movement and the dash showed how timing and animation affect perceived responsiveness.</p></article>
+        <article><h3>Physics and collisions</h3><p>Falling hazards turned Unity’s physics and collision systems into immediate, visible gameplay feedback.</p></article>
+      </div>
+    </section>
+
+    <section class="detail-section visual-section" id="takeaway">
+      <div class="wrap two-column">
+        <div><p class="eyebrow">Takeaway</p><h2>The foundation for later projects</h2></div>
+        <div class="prose">
+          <p>Descending Darts taught me that even a mechanically simple game requires many systems to work together reliably. Finishing it gave me the confidence to move from structured instruction toward more ambitious independent projects.</p>
+          <p>It now serves as a useful starting point in my portfolio: a clear record of where my Unity development began and how far the scope and architecture of my later work have progressed.</p>
+        </div>
+      </div>
+    </section>
+
+    <nav class="project-next wrap" aria-label="Other projects"><a href="/projects/platformer/"><span>Next stage of development</span><strong>Explore Platformer →</strong></a></nav>
+  </main>
+  <footer class="wrap"><p>© <span data-year>2026</span> Garrett Goodwin</p><p><a href="/projects/">All projects</a> · <a href="mailto:garrett.w.goodwin@gmail.com">Contact</a></p></footer>
+</body>
+</html>
