@@ -27,7 +27,7 @@
           <p class="detail-lede">An online arena shooter for up to eight players, built around a comeback economy that gives defeated players new ways to turn a match around.</p>
         </div>
       </div>
-      <div class="hero-frame hero-frame-contained"><img src="/assets/upturn.webp" alt="Upturn multiplayer shooter title screen."></div>
+      <div class="hero-frame upturn-hero-frame"><img src="/assets/upturn.webp" alt="Upturn key art showing its low-poly arena, player character, weapons, abilities, and comeback items."></div>
       <dl class="fact-bar">
         <div><dt>Role</dt><dd>Solo Developer</dd></div>
         <div><dt>Genre</dt><dd>Multiplayer FPS</dd></div>
@@ -74,6 +74,40 @@
         <article><span>05</span><h3>Player movement</h3><p>Developed responsive first-person movement with jumping, sliding, wall-running experiments, aiming, weapon switching, and ability input.</p></article>
         <article><span>06</span><h3>Maps and iteration</h3><p>Designed the close-quarters Farm arena and a more vertical Tundra direction, using cover, sightlines, portals, and movement routes to support the weapon set.</p></article>
       </div>
+
+      <div class="arsenal-showcase" aria-labelledby="arsenal-title">
+        <div class="arsenal-intro">
+          <p class="eyebrow">Content systems</p>
+          <h3 id="arsenal-title">A flexible combat sandbox</h3>
+          <p>Six weapons support different ranges and play styles, while eight purchasable abilities let players recover, reposition, disrupt opponents, or change the arena.</p>
+        </div>
+        <div class="arsenal-groups">
+          <section class="arsenal-group" aria-labelledby="weapon-title">
+            <h4 id="weapon-title">Weapons</h4>
+            <ul class="arsenal-grid weapon-grid">
+              <li><img src="/assets/upturn/weapon-sword.webp" alt=""><span>Sword</span></li>
+              <li><img src="/assets/upturn/weapon-spear.webp" alt=""><span>Spear</span></li>
+              <li><img src="/assets/upturn/weapon-bow.webp" alt=""><span>Bow</span></li>
+              <li><img src="/assets/upturn/weapon-pistol.webp" alt=""><span>Pistol</span></li>
+              <li><img src="/assets/upturn/weapon-rifle.webp" alt=""><span>Rifle</span></li>
+              <li><img src="/assets/upturn/weapon-sniper.webp" alt=""><span>Sniper</span></li>
+            </ul>
+          </section>
+          <section class="arsenal-group" aria-labelledby="ability-title">
+            <h4 id="ability-title">Abilities</h4>
+            <ul class="arsenal-grid ability-grid">
+              <li><img src="/assets/upturn/ability-bounce-bomb.webp" alt=""><span>Bounce bomb</span></li>
+              <li><img src="/assets/upturn/ability-grenade.webp" alt=""><span>Grenade</span></li>
+              <li><img src="/assets/upturn/ability-wall-grenade.webp" alt=""><span>Wall grenade</span></li>
+              <li><img src="/assets/upturn/ability-smoke-bomb.webp" alt=""><span>Smoke bomb</span></li>
+              <li><img src="/assets/upturn/ability-ghost-mode.webp" alt=""><span>Ghost mode</span></li>
+              <li><img src="/assets/upturn/ability-darkened-portal.webp" alt=""><span>Dark portal</span></li>
+              <li><img src="/assets/upturn/ability-medkit.webp" alt=""><span>Medkit</span></li>
+              <li><img src="/assets/upturn/ability-thermal-vision.webp" alt=""><span>Thermal vision</span></li>
+            </ul>
+          </section>
+        </div>
+      </div>
     </section>
 
     <section class="detail-section engineering-section" id="development">
@@ -92,8 +126,11 @@
               <ul><li>Shifted the goal from recreating mechanics to designing a complete match.</li><li>Used the comeback economy as the project’s defining rule.</li><li>Reworked the presentation as the design became more focused.</li></ul>
             </div>
             <figure class="development-figure">
-              <div class="source-crop upturn-menu-crop"><img src="/assets/upturn/menu-iterations-source.png" alt="Three Upturn menu designs showing the project’s visual evolution."></div>
-              <figcaption>Three menu iterations document the project’s changing visual identity and scope.</figcaption>
+              <div class="dev-image-pair">
+                <div class="dev-shot"><img src="/assets/upturn/prototype-linked-menu.webp" alt="The neon menu from the early networking prototype, originally titled Linked." loading="lazy"><span>Early prototype · Linked</span></div>
+                <div class="dev-shot"><img src="/assets/upturn/upturn-menu.webp" alt="The redesigned outdoor menu after the project became Upturn." loading="lazy"><span>Focused direction · Upturn</span></div>
+              </div>
+              <figcaption>Direct captures show the transition from a networking experiment into Upturn’s own visual identity.</figcaption>
             </figure>
           </article>
 
@@ -105,8 +142,12 @@
               <ul><li>Compared projectile weapons with immediate hitscan feedback.</li><li>Balanced close-range routes against longer sightlines.</li><li>Used portals and verticality to keep larger spaces connected.</li></ul>
             </div>
             <figure class="development-figure">
-              <div class="source-crop upturn-development-crop"><img src="/assets/upturn/development-gallery-source.png" alt="Early Upturn gameplay tests and low-poly character development images."></div>
-              <figcaption>Early combat rooms, map experiments, and character modeling from development.</figcaption>
+              <div class="development-mosaic">
+                <div class="dev-shot dev-shot-wide"><img src="/assets/upturn/prototype-wall-run.webp" alt="A tilted first-person view used to test Upturn's wall-running movement." loading="lazy"><span>Wall-running test</span></div>
+                <div class="dev-shot"><img src="/assets/upturn/prototype-pistol.webp" alt="An early pistol and hit-feedback test in a graybox arena." loading="lazy"><span>Pistol feedback</span></div>
+                <div class="dev-shot"><img src="/assets/upturn/prototype-sniper.webp" alt="A sniper rifle being tested against long sightlines in a graybox arena." loading="lazy"><span>Range and sightlines</span></div>
+              </div>
+              <figcaption>Graybox rooms let me isolate movement, weapon feedback, and map-spacing decisions before polishing the arenas.</figcaption>
             </figure>
           </article>
 
@@ -118,7 +159,7 @@
               <ul><li>Separated essential match features from experimental additions.</li><li>Refactored tightly coupled prototype code as systems became clearer.</li><li>Learned to define a finish line before expanding a project.</li></ul>
             </div>
             <figure class="development-figure development-figure-narrow">
-              <div class="source-crop upturn-planning-crop"><img src="/assets/upturn/planning-source.png" alt="Trello board used to organize Upturn development tasks."></div>
+              <img class="planning-image" src="/assets/upturn/planning-board.webp" alt="Trello board used to organize Upturn development tasks into To Do, Doing, and Done columns." loading="lazy">
               <figcaption>The task board used to prioritize a playable, cohesive build.</figcaption>
             </figure>
           </article>
