@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1200" viewBox="0 0 1600 1200" role="img" aria-labelledby="title desc"><title id="title">How the core gameplay systems connect</title><desc id="desc">Selected runtime architecture of ReapKeep. Spawn data feeds TestEnemySpawner, which requests enemies from EnemyPool. Pooled enemies combine movement, local crowd separation, and health. Combat causes death and XP drops. XPPickupManager manages pooled gems, which award PlayerXP. Queued level-up choices modify the build and feed back into combat. Enemy death returns the enemy to its pool.</desc><defs>
+<marker id="pink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#f05a93"/></marker>
+<marker id="blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#74bfd1"/></marker>
+<marker id="muted" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#b9c1cd"/></marker>
+<marker id="amber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#efb26d"/></marker>
+</defs><rect width="1600" height="1200" fill="#0b0d12"/>
+<text x="60" y="64" font-family="DejaVu Sans, sans-serif" font-size="20" font-weight="700" text-anchor="start" fill="#f05a93">REAPKEEP / CORE SYSTEMS</text>
+<text x="1540" y="64" font-family="DejaVu Sans, sans-serif" font-size="20" font-weight="400" text-anchor="end" fill="#b9c1cd">01 / 04</text>
+<text x="60" y="139" font-family="DejaVu Sans, sans-serif" font-size="46" font-weight="700" text-anchor="start" fill="#f2f3f5">How the core gameplay systems connect</text>
+<text x="60" y="188" font-family="DejaVu Sans, sans-serif" font-size="24" font-weight="400" text-anchor="start" fill="#b9c1cd">A connected view of spawning, combat, rewards, and the player’s growing build.</text>
+<rect x="60" y="245" width="410" height="150" rx="7" fill="#151922" stroke="#3b4452" stroke-width="1.3"/>
+<text x="84" y="285" font-family="DejaVu Sans, sans-serif" font-size="27" font-weight="700" text-anchor="start" fill="#f2f3f5">Spawn rules</text>
+<text x="84" y="324" font-family="DejaVu Sans, sans-serif" font-size="22" font-weight="400" text-anchor="start" fill="#b9c1cd">SpawnPhase + EnemyStatsData</text>
+<text x="84" y="356" font-family="DejaVu Sans, sans-serif" font-size="22" font-weight="400" text-anchor="start" fill="#b9c1cd">Timing, weights, and profiles</text>
+<rect x="600" y="245" width="400" height="150" rx="7" fill="#151922" stroke="#3b4452" stroke-width="1.3"/>
+<text x="624" y="285" font-family="DejaVu Sans, sans-serif" font-size="27" font-weight="700" text-anchor="start" fill="#f2f3f5">Spawn scheduler</text>
+<text x="624" y="324" font-family="DejaVu Sans, sans-serif" font-size="22" font-weight="400" text-anchor="start" fill="#b9c1cd">TestEnemySpawner</text>
+<text x="624" y="356" font-family="DejaVu Sans, sans-serif" font-size="22" font-weight="400" text-anchor="start" fill="#b9c1cd">Budgets, caps, timed events</text>
+<rect x="1130" y="245" width="410" height="150" rx="7" fill="#20171f" stroke="#f05a93" stroke-width="1.3"/>
+<text x="1154" y="285" font-family="DejaVu Sans, sans-serif" font-size="27" font-weight="700" text-anchor="start" fill="#f2f3f5">Enemy pool</text>
+<text x="1154" y="324" font-family="DejaVu Sans, sans-serif" font-size="22" font-weight="400" text-anchor="start" fill="#b9c1cd">EnemyPool</text>
+<text x="1154" y="356" font-family="DejaVu Sans, sans-serif" font-size="22" font-weight="400" text-anchor="start" fill="#b9c1cd">Reuse, configure, activate</text>
+<rect x="60" y="525" width="410" height="160" rx="7" fill="#151922" stroke="#3b4452" stroke-width="1.3"/>
+<text x="84" y="565" font-family="DejaVu Sans, sans-serif" font-size="27" font-weight="700" text-anchor="start" fill="#f2f3f5">Weapons + combat</text>
+<text x="84" y="604" font-family="DejaVu Sans, sans-serif" font-size="22" font-weight="400" text-anchor="start" fill="#b9c1cd">Runtime weapon behavior</text>
+<text x="84" y="636" font-family="DejaVu Sans, sans-serif" font-size="22" font-weight="400" text-anchor="start" fill="#b9c1cd">Damage applied to enemies</text>
+<rect x="600" y="525" width="400" height="160" rx="7" fill="#20171f" stroke="#f05a93" stroke-width="1.3"/>
+<text x="624" y="565" font-family="DejaVu Sans, sans-serif" font-size="27" font-weight="700" text-anchor="start" fill="#f2f3f5">Active enemies</text>
+<text x="624" y="604" font-family="DejaVu Sans, sans-serif" font-size="22" font-weight="400" text-anchor="start" fill="#b9c1cd">EnemyMovementController</text>
+<text x="624" y="636" font-family="DejaVu Sans, sans-serif" font-size="22" font-weight="400" text-anchor="start" fill="#b9c1cd">EnemySeparation + health</text>
+<rect x="1130" y="525" width="410" height="160" rx="7" fill="#151922" stroke="#3b4452" stroke-width="1.3"/>
+<text x="1154" y="565" font-family="DejaVu Sans, sans-serif" font-size="27" font-weight="700" text-anchor="start" fill="#f2f3f5">Death + rewards</text>
+<text x="1154" y="604" font-family="DejaVu Sans, sans-serif" font-size="22" font-weight="400" text-anchor="start" fill="#b9c1cd">EnemyDeathHandler</text>
+<text x="1154" y="636" font-family="DejaVu Sans, sans-serif" font-size="22" font-weight="400" text-anchor="start" fill="#b9c1cd">XP drops and despawn</text>
+<rect x="60" y="830" width="410" height="160" rx="7" fill="#151922" stroke="#3b4452" stroke-width="1.3"/>
+<text x="84" y="870" font-family="DejaVu Sans, sans-serif" font-size="27" font-weight="700" text-anchor="start" fill="#f2f3f5">Build upgrades</text>
+<text x="84" y="909" font-family="DejaVu Sans, sans-serif" font-size="22" font-weight="400" text-anchor="start" fill="#b9c1cd">LevelUpScreen → inventories</text>
+<text x="84" y="941" font-family="DejaVu Sans, sans-serif" font-size="22" font-weight="400" text-anchor="start" fill="#b9c1cd">Recompute player stats</text>
+<rect x="600" y="830" width="400" height="160" rx="7" fill="#151922" stroke="#3b4452" stroke-width="1.3"/>
+<text x="624" y="870" font-family="DejaVu Sans, sans-serif" font-size="27" font-weight="700" text-anchor="start" fill="#f2f3f5">XP + level-ups</text>
+<text x="624" y="909" font-family="DejaVu Sans, sans-serif" font-size="22" font-weight="400" text-anchor="start" fill="#b9c1cd">PlayerXP + LevelUpBar</text>
+<text x="624" y="941" font-family="DejaVu Sans, sans-serif" font-size="22" font-weight="400" text-anchor="start" fill="#b9c1cd">Queue and present choices</text>
+<rect x="1130" y="830" width="410" height="160" rx="7" fill="#20171f" stroke="#f05a93" stroke-width="1.3"/>
+<text x="1154" y="870" font-family="DejaVu Sans, sans-serif" font-size="27" font-weight="700" text-anchor="start" fill="#f2f3f5">Gem management</text>
+<text x="1154" y="909" font-family="DejaVu Sans, sans-serif" font-size="22" font-weight="400" text-anchor="start" fill="#b9c1cd">XPPickupManager</text>
+<text x="1154" y="941" font-family="DejaVu Sans, sans-serif" font-size="22" font-weight="400" text-anchor="start" fill="#b9c1cd">XP pool, merging, collection</text>
+<path d="M470 320 L600 320" fill="none" stroke="#f05a93" stroke-width="2.5" stroke-linejoin="round" marker-end="url(#pink)"/>
+<text x="493" y="300" font-family="DejaVu Sans, sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#b9c1cd">configure</text>
+<path d="M1000 320 L1130 320" fill="none" stroke="#f05a93" stroke-width="2.5" stroke-linejoin="round" marker-end="url(#pink)"/>
+<text x="1019" y="275" font-family="DejaVu Sans, sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#b9c1cd">spawn</text>
+<text x="1019" y="300" font-family="DejaVu Sans, sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#b9c1cd">request</text>
+<path d="M1335 395 L1335 450 L800 450 L800 525" fill="none" stroke="#f05a93" stroke-width="2.5" stroke-linejoin="round" marker-end="url(#pink)"/>
+<text x="1045" y="435" font-family="DejaVu Sans, sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#b9c1cd">prepare + activate</text>
+<path d="M470 602 L600 602" fill="none" stroke="#f05a93" stroke-width="2.5" stroke-linejoin="round" marker-end="url(#pink)"/>
+<text x="486" y="582" font-family="DejaVu Sans, sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#b9c1cd">damage</text>
+<path d="M1000 602 L1130 602" fill="none" stroke="#f05a93" stroke-width="2.5" stroke-linejoin="round" marker-end="url(#pink)"/>
+<text x="1021" y="582" font-family="DejaVu Sans, sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#b9c1cd">on death</text>
+<path d="M1335 685 L1335 830" fill="none" stroke="#f05a93" stroke-width="2.5" stroke-linejoin="round" marker-end="url(#pink)"/>
+<text x="1358" y="753" font-family="DejaVu Sans, sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#b9c1cd">XP reward</text>
+<path d="M1130 908 L1000 908" fill="none" stroke="#f05a93" stroke-width="2.5" stroke-linejoin="round" marker-end="url(#pink)"/>
+<text x="1016" y="859" font-family="DejaVu Sans, sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#b9c1cd">collect</text>
+<text x="1016" y="884" font-family="DejaVu Sans, sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#b9c1cd">value</text>
+<path d="M600 908 L470 908" fill="none" stroke="#f05a93" stroke-width="2.5" stroke-linejoin="round" marker-end="url(#pink)"/>
+<text x="487" y="859" font-family="DejaVu Sans, sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#b9c1cd">queued</text>
+<text x="487" y="884" font-family="DejaVu Sans, sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#b9c1cd">choices</text>
+<path d="M265 830 L265 685" fill="none" stroke="#f05a93" stroke-width="2.5" stroke-linejoin="round" marker-end="url(#pink)"/>
+<text x="286" y="748" font-family="DejaVu Sans, sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#b9c1cd">new stats /</text>
+<text x="286" y="773" font-family="DejaVu Sans, sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#b9c1cd">inventory</text>
+<path d="M1540 602 L1570 602 L1570 320 L1540 320" fill="none" stroke="#74bfd1" stroke-width="2.5" stroke-linejoin="round" marker-end="url(#blue)"/>
+<text x="1410" y="475" font-family="DejaVu Sans, sans-serif" font-size="18" font-weight="400" text-anchor="middle" fill="#74bfd1">return for reuse</text>
+<path d="M1544 468 L1570 468" fill="none" stroke="#74bfd1" stroke-width="1" stroke-linejoin="round"/>
+<text x="60" y="1058" font-family="DejaVu Sans, sans-serif" font-size="27" font-weight="700" text-anchor="start" fill="#f2f3f5">The three highlighted systems support the same combat → reward → upgrade loop.</text>
+<path d="M60 1128 L1540 1128" fill="none" stroke="#3b4452" stroke-width="1" stroke-linejoin="round"/>
+<text x="60" y="1156" font-family="DejaVu Sans, sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#b9c1cd">Selected core paths from Scripts(4).zip. Other systems include UI navigation, Decrees, progression, saves, audio, and world generation.</text>
+<text x="60" y="1184" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" text-anchor="start" fill="#b9c1cd">Connections summarize responsibilities and data flow; this is not a complete class dependency graph.</text></svg>
