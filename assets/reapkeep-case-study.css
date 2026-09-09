@@ -1,4 +1,4 @@
-/* ReapKeep case study: four core diagrams and concise supporting systems. */
+/* ReapKeep case study: design context, four core diagrams, and development reflection. */
 .rk-intro-grid { display: grid; grid-template-columns: 1fr 1.15fr; gap: 48px; align-items: center; margin-bottom: 40px; }
 .rk-intro-grid > *, .rk-insights > *, .rk-system-note > *, .rk-tools > * { min-width: 0; }
 .rk-intro-copy h1 { margin: 0 0 18px; font-size: clamp(3.3rem, 5.5vw, 5.2rem); }
@@ -20,6 +20,26 @@
 .reapkeep-page :is(a, summary, [tabindex="0"]):focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; }
 .rk-project-overview { padding-bottom: 42px; }
 .rk-play-view { padding-bottom: 80px; }
+.rk-design-feature .section-heading { padding-top: 8px; }
+.rk-design-copy { display: grid; grid-template-columns: 1.1fr 1fr; gap: 48px; align-items: start; margin-top: 36px; }
+.rk-design-copy > * { min-width: 0; }
+.rk-design-copy h3 { font-size: 1.3rem; letter-spacing: -.02em; line-height: 1.35; margin: 0 0 16px; }
+.rk-design-copy p, .rk-design-connection { color: var(--muted); font-size: 1rem; }
+.rk-design-copy p { margin: 0 0 16px; }
+.rk-design-copy p:last-child { margin-bottom: 0; }
+.rk-decree-example { border-left: 2px solid var(--accent); padding-left: 26px; }
+.rk-decree-example .eyebrow { color: #ff9abe; font-size: .875rem; margin-bottom: 12px; }
+.rk-design-connection { max-width: 900px; margin: 32px 0 0; }
+.rk-design-connection a { color: #ff9abe; text-underline-offset: 4px; }
+.rk-reflection { max-width: 900px; margin: 0 0 36px; padding-left: 26px; border-left: 2px solid var(--line); }
+.rk-reflection h3 { font-size: 1.2rem; letter-spacing: -.02em; margin: 0 0 14px; }
+.rk-reflection p { color: var(--muted); font-size: 1rem; margin: 0 0 16px; }
+.rk-reflection p:last-child { margin-bottom: 0; }
+.rk-crowd-controls { border-top: 1px solid var(--line); padding-top: 32px; margin-top: 32px; }
+.rk-crowd-controls > h3 { font-size: 1.25rem; margin: 0; letter-spacing: -.02em; }
+.rk-crowd-controls .rk-insights { margin-top: 24px; }
+.rk-crowd-controls h4 { font-size: 1rem; line-height: 1.5; margin: 0 0 10px; }
+.rk-crowd-controls .rk-source { border: 0; margin-top: 12px; }
 .reapkeep-page .detail-figure figcaption { font-size: .875rem; color: var(--muted); }
 .rk-system-figure { margin: 0; }
 .rk-diagram-scroll { max-width: 100%; overflow-x: auto; background: var(--bg); border: 1px solid var(--line); border-radius: 8px; scrollbar-color: #7c5065 var(--bg); }
@@ -57,6 +77,8 @@
 }
 @media (max-width: 800px) {
   .rk-intro-grid, .rk-insights, .rk-system-note, .rk-tools { grid-template-columns: 1fr; gap: 24px; }
+  .rk-design-copy { grid-template-columns: 1fr; gap: 28px; margin-top: 28px; }
+  .rk-decree-example, .rk-reflection { padding-left: 18px; }
   .rk-intro-art { max-width: 700px; }
   .rk-project-overview { padding-bottom: 32px; }
   .rk-play-view { padding-bottom: 56px; }
