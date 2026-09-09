@@ -9,6 +9,26 @@
   <link rel="stylesheet" href="/styles.css">
   <link rel="stylesheet" href="/assets/reapkeep-case-study.css">
   <script src="/script.js" defer></script>
+  <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48 64x64">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" sizes="any">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
+  <link rel="canonical" href="https://garrettgoodwin.github.io/projects/reapkeep/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Garrett Goodwin">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="ReapKeep Case Study | Garrett Goodwin">
+  <meta property="og:description" content="ReapKeep by Garrett Goodwin: structure-driven exploration, Death’s Decrees, and the Unity systems behind crowded combat, knockback, pooling, and XP rewards.">
+  <meta property="og:url" content="https://garrettgoodwin.github.io/projects/reapkeep/">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="ReapKeep Case Study | Garrett Goodwin">
+  <meta name="twitter:description" content="ReapKeep by Garrett Goodwin: structure-driven exploration, Death’s Decrees, and the Unity systems behind crowded combat, knockback, pooling, and XP rewards.">
+  <meta property="og:image" content="https://garrettgoodwin.github.io/assets/share/reapkeep.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1232">
+  <meta property="og:image:height" content="706">
+  <meta property="og:image:alt" content="ReapKeep key artwork with the Reaper and masked enemies.">
+  <meta name="twitter:image" content="https://garrettgoodwin.github.io/assets/share/reapkeep.jpg">
+  <meta name="twitter:image:alt" content="ReapKeep key artwork with the Reaper and masked enemies.">
 </head>
 <body class="subpage project-detail reapkeep-page">
   <a class="skip-link" href="#main">Skip to content</a>
@@ -34,7 +54,7 @@
       <dl class="fact-bar">
         <div><dt>Role</dt><dd>Solo Developer</dd></div><div><dt>Status</dt><dd>In development</dd></div><div><dt>Technology</dt><dd>Unity · C#</dd></div><div><dt>Release target</dt><dd>PC · Planned for Steam</dd></div>
       </dl>
-      <nav class="case-nav" aria-label="Case study sections"><a href="#game-design">Game design</a><a href="#architecture">Systems overview</a><a href="#enemy-lifecycle">Object pooling</a><a href="#enemy-separation">Enemy movement</a><a href="#xp-system">XP gems</a><a href="#engineering">Builds &amp; progression</a><a href="#tooling">Tools</a></nav>
+      <nav class="case-nav" aria-label="Case study sections"><a href="#game-design">Game design</a><a href="#architecture">Systems overview</a><a href="#enemy-lifecycle">Object pooling</a><a href="#enemy-separation">Enemy movement</a><a href="#xp-system">XP gems</a><a href="#engineering">Builds &amp; progression</a><a href="#tooling">Tools</a><a href="#code-sample">Code sample</a></nav>
     </section>
 
     <section class="detail-section wrap two-column rk-project-overview" id="overview">
@@ -138,8 +158,13 @@
       </div>
     </section>
 
+    <section class="detail-section wrap two-column" id="code-sample">
+      <div><p class="eyebrow">Selected source</p><h2>A closer look at the C#.</h2></div>
+      <div class="prose"><p><strong>Animation pause cache.</strong> This small component shows how I cache Animator references, count overlapping pause requests, restore previous playback speeds, and clear state for pooled reuse.</p><a class="case-link" href="/code/animation-pause/">Read the annotated code sample →</a></div>
+    </section>
+
     <section class="wrap rk-review-scope" aria-label="Implementation scope">
-      <details class="rk-source"><summary>Implementation scope and source privacy</summary><p>This walkthrough combines my development experience, the v1.7 game design document, and selected paths in the September 2026 C# snapshot. The crowd-collision problem is a qualitative development observation; no before-and-after profiler measurements are presented. The diagrams explain the implementation. Scene/prefab configuration and runtime performance have not been independently verified for this case study.</p><p>Other systems include world generation, character abilities, audio, and composable achievement rules. Source code remains private.</p></details>
+      <details class="rk-source"><summary>Implementation scope and source privacy</summary><p>This walkthrough combines my development experience, the v1.7 game design document, and selected paths in the September 2026 C# snapshot. The crowd-collision problem is a qualitative development observation; no before-and-after profiler measurements are presented. The diagrams explain the implementation. Scene/prefab configuration and runtime performance have not been independently verified for this case study.</p><p>Other systems include world generation, character abilities, audio, and composable achievement rules. The full game source remains private; the animation-pause sample above contains two selected source files.</p></details>
       <p class="rk-review-note">In development · Technical walkthrough updated September 2026</p>
     </section>
 

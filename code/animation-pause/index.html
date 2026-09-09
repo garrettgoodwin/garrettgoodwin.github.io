@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b0d12">
+  <meta name="description" content="Selected ReapKeep C# source demonstrating cached Animator references, overlapping pause requests, speed restoration, and pooled object reset.">
+  <title>Unity Animation Pause Code Sample | Garrett Goodwin</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/script.js" defer></script>
+  <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48 64x64">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" sizes="any">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
+  <link rel="canonical" href="https://garrettgoodwin.github.io/code/animation-pause/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Garrett Goodwin">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="Unity Animation Pause Code Sample | Garrett Goodwin">
+  <meta property="og:description" content="Selected ReapKeep C# source demonstrating cached Animator references, overlapping pause requests, speed restoration, and pooled object reset.">
+  <meta property="og:url" content="https://garrettgoodwin.github.io/code/animation-pause/">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Unity Animation Pause Code Sample | Garrett Goodwin">
+  <meta name="twitter:description" content="Selected ReapKeep C# source demonstrating cached Animator references, overlapping pause requests, speed restoration, and pooled object reset.">
+</head>
+<body class="subpage">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header" data-header>
+    <a class="brand" href="/" aria-label="Garrett Goodwin home">
+      <span class="brand-mark">GG</span>
+      <span>Garrett Goodwin</span>
+    </a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+      <span></span><span></span><span></span><span class="sr-only">Open navigation</span>
+    </button>
+    <nav id="site-nav" aria-label="Primary">
+      <a href="/projects/">Projects</a>
+      <a href="/#experience">Experience</a>
+      <a href="/#about">About</a>
+      <a href="/assets/Garrett_Goodwin_Resume.pdf" target="_blank" rel="noreferrer">Résumé ↗</a>
+      <a href="https://github.com/garrettgoodwin" target="_blank" rel="noreferrer">GitHub ↗</a>
+      <a class="nav-contact" href="mailto:garrett.w.goodwin@gmail.com">Contact</a>
+    </nav>
+  </header>
+  <main id="main">
+    <section class="detail-hero wrap">
+      <a class="back-link" href="/projects/reapkeep/#code-sample">← ReapKeep case study</a>
+      <div class="detail-heading"><div>
+        <p class="eyebrow">Selected C# source · ReapKeep</p>
+        <h1>Pausing animation without losing state.</h1>
+        <p class="detail-lede">A small Unity component that caches child Animators, handles overlapping pause requests, and resets animation state when a pooled object is reused.</p>
+      </div></div>
+      <dl class="fact-bar"><div><dt>Language</dt><dd>C#</dd></div><div><dt>Engine</dt><dd>Unity</dd></div><div><dt>Focus</dt><dd>State &amp; lifecycle</dd></div><div><dt>Source</dt><dd>Selected project files</dd></div></dl>
+      <nav class="case-nav" aria-label="Code sample sections"><a href="#approach">Approach</a><a href="#source">Source excerpt</a><a href="#integration">Integration</a></nav>
+    </section>
+    <section class="detail-section wrap two-column" id="approach">
+      <div><p class="eyebrow">The problem</p><h2>More than one effect can request a pause.</h2></div>
+      <div class="prose"><p>A single boolean can resume an animation too early when two effects overlap. This component counts outstanding pause requests. The first request stores each Animator’s current speed; only the final matching resume restores it.</p><p>Child references and speed arrays are cached. Normal pause and resume operations walk those cached references, while pool callbacks clear state before the next use.</p></div>
+    </section>
+    <section class="detail-section tinted-section" id="source"><div class="wrap">
+      <div class="section-heading"><div><p class="eyebrow">Source excerpt</p><h2>Capture once. Restore when every pause ends.</h2></div><p>These methods are reproduced from <code>FrozenAnimatorCache.cs</code>. The complete component and its pool-callback interface are available below.</p></div>
+      <details class="code-excerpt" open><summary>Read Pause() and Resume()</summary><pre tabindex="0" aria-label="C# pause and resume source code"><code>    public void Pause()
+    {
+        CacheIfNeeded();
+
+        _pauseCount++;
+        if (_pauseCount &gt; 1) return;
+
+        for (int i = 0; i &lt; _anims.Length; i++)
+        {
+            Animator animator = _anims[i];
+            _resumeSpeeds[i] = animator ? animator.speed : 1f;
+            if (animator &amp;&amp; animator.speed != 0f)
+                animator.speed = 0f;
+        }
+    }
+
+    public void Resume()
+    {
+        if (_pauseCount &lt;= 0) return;
+
+        _pauseCount--;
+        if (_pauseCount &gt; 0) return;
+
+        for (int i = 0; i &lt; _anims.Length; i++)
+        {
+            Animator animator = _anims[i];
+            if (!animator) continue;
+
+            float target = i &lt; _resumeSpeeds.Length
+                ? _resumeSpeeds[i]
+                : _defaultSpeeds[i];
+
+            if (!Mathf.Approximately(animator.speed, target))
+                animator.speed = target;
+        }
+    }</code></pre></details>
+      <div class="hero-actions"><a class="button primary" href="https://github.com/garrettgoodwin/garrettgoodwin.github.io/tree/main/code/animation-pause" target="_blank" rel="noreferrer">View source on GitHub ↗</a><a class="button secondary" href="/code/animation-pause/ReapKeep_Animation_Pause_Sample.zip" download>Download code sample</a></div>
+    </div></section>
+    <section class="detail-section wrap two-column" id="integration">
+      <div><p class="eyebrow">Integration &amp; tradeoffs</p><h2>A focused component with clear boundaries.</h2></div>
+      <div class="prose"><p>Add the component to an Animator hierarchy, pair every <code>Pause()</code> with a <code>Resume()</code>, and have the pool call <code>OnPoolSpawn()</code> and <code>OnPoolDespawn()</code>. With the default settings, respawning also restores cached default speeds.</p><p>The cache assumes a stable hierarchy. Rebuild it while unpaused if child Animators change, and coordinate with other systems that modify animation speed. This component controls animation playback; movement and other gameplay systems have their own pause behavior.</p><p>The included README explains setup and the limits of the sample. These two source files are unchanged from the project snapshot; the full ReapKeep repository remains private.</p><p>API references: <a href="https://docs.unity3d.com/ScriptReference/Animator-speed.html" target="_blank" rel="noreferrer">Animator.speed</a> and <a href="https://docs.unity3d.com/ScriptReference/Component.GetComponentsInChildren.html" target="_blank" rel="noreferrer">GetComponentsInChildren</a>.</p></div>
+    </section>
+    <nav class="project-next wrap" aria-label="Related project"><a href="/projects/reapkeep/"><span>See the wider game architecture</span><strong>Back to ReapKeep →</strong></a></nav>
+</main>
+  <footer class="wrap">
+    <p>© <span data-year>2026</span> Garrett Goodwin</p>
+    <p>Gameplay Programmer & Software Engineer · Queen Creek, Arizona</p>
+  </footer>
+</body>
+</html>

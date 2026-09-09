@@ -519,3 +519,14 @@ footer a { color: #aeb5bf; text-underline-offset: 4px; }
 }
 
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+/* Utility pages and readable, optional source excerpts. */
+.utility-page { min-height: calc(100svh - 168px); padding-block: clamp(64px, 10vw, 128px); }
+.utility-page h1 { max-width: 850px; font-size: clamp(2.25rem, 5vw, 4rem); }
+.utility-page > p:not(.eyebrow) { max-width: 650px; color: var(--muted); }
+.code-excerpt { margin-top: 28px; border: 1px solid var(--line); border-radius: 8px; background: var(--panel); }
+.code-excerpt summary { padding: 18px 22px; color: var(--text); font-size: 1rem; font-weight: 700; cursor: pointer; }
+.code-excerpt pre { margin: 0; padding: 22px; border-top: 1px solid var(--line); overflow-x: auto; font-size: .875rem; line-height: 1.65; tab-size: 4; }
+.prose code { overflow-wrap: anywhere; }
+.code-excerpt pre code { font-size: inherit; color: #dce0e5; white-space: pre; }
+.code-excerpt pre:focus-visible, .code-excerpt summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
