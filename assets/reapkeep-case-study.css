@@ -40,6 +40,8 @@
 .rk-crowd-controls .rk-insights { margin-top: 24px; }
 .rk-crowd-controls h4 { font-size: 1rem; line-height: 1.5; margin: 0 0 10px; }
 .rk-crowd-controls .rk-source { border: 0; margin-top: 12px; }
+/* Scale figure height with its responsive width, overriding HTML height hints. */
+.reapkeep-page .detail-figure img { height: auto; }
 .reapkeep-page .detail-figure figcaption { font-size: .875rem; color: var(--muted); }
 .rk-system-figure { margin: 0; }
 .rk-diagram-scroll { max-width: 100%; overflow-x: auto; background: var(--bg); border: 1px solid var(--line); border-radius: 8px; scrollbar-color: #7c5065 var(--bg); }
