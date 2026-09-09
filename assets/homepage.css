@@ -1,0 +1,92 @@
+/* Homepage composition. Shared project-page styles remain in styles.css. */
+.home-page .eyebrow,
+.home-page .card-label,
+.home-page .tag-row span,
+.home-page .case-link,
+.home-page .card-link,
+.home-page .site-header nav a { font-size: .875rem; }
+.home-page :is(section, h1, h2)[id] { scroll-margin-top: 100px; }
+.home-page a:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; }
+.home-page .section { padding-block: 78px; }
+.home-intro { display: grid; grid-template-columns: 1.15fr 1fr; align-items: center; gap: 64px; padding-block: 68px 58px; }
+.home-intro > *, .home-feature-grid > *, .home-project-grid > *, .home-experience-entry > * { min-width: 0; }
+.home-intro .eyebrow { line-height: 1.6; letter-spacing: .07em; }
+.home-intro h1 { margin: 0; max-width: 620px; font-size: clamp(2.5rem, 4.8vw, 4rem); line-height: 1.08; letter-spacing: -.045em; }
+.home-intro-copy > p { color: var(--muted); margin: 0 0 16px; font-size: 1rem; }
+.home-intro-copy .home-intro-experience { margin-bottom: 0; }
+.home-intro-experience a { color: #dce0e5; text-underline-offset: 4px; }
+.home-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
+.home-feature { padding-top: 30px; border-top: 1px solid var(--line); }
+.home-feature-heading { display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 20px 32px; margin-bottom: 24px; }
+.home-feature-heading .eyebrow { margin-bottom: 10px; }
+.home-feature h2 { margin: 0; font-size: clamp(2.2rem, 3.5vw, 3rem); letter-spacing: -.035em; }
+.home-project-meta { margin: 0; color: #d3d8df; font-size: .875rem; text-align: right; }
+.home-project-meta span { display: block; color: var(--muted); }
+.home-feature-grid { display: grid; grid-template-columns: 1.2fr .9fr; align-items: center; overflow: hidden; border: 1px solid var(--line); border-radius: 10px; background: var(--panel); }
+.home-feature-image { display: block; background: #090b0f; }
+.home-feature-image img { display: block; width: 100%; height: auto; }
+.home-feature-copy { padding: 30px; }
+.home-feature-copy > p { margin: 0 0 22px; color: #d2d7df; font-size: 1rem; }
+.home-feature-highlights { list-style: none; padding: 0; margin: 0; display: grid; gap: 17px; }
+.home-feature-highlights li { padding-left: 15px; border-left: 2px solid #644256; }
+.home-feature-highlights strong { display: block; font-size: 1rem; font-weight: 700; }
+.home-feature-highlights span { display: block; color: var(--muted); font-size: 1rem; line-height: 1.55; }
+.home-feature-links { display: flex; align-items: center; flex-wrap: wrap; gap: 12px 24px; margin-top: 24px; }
+.home-feature-links .case-link { margin: 0; }
+.home-secondary-link { color: #cbd1da; font-size: .875rem; font-weight: 650; text-underline-offset: 4px; }
+.home-section-heading { margin-bottom: 30px; }
+.home-section-heading .eyebrow { margin-bottom: 12px; }
+.home-section-heading h2 { margin: 0; font-size: clamp(1.8rem, 3vw, 2.5rem); letter-spacing: -.035em; }
+.home-project-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 26px; }
+.home-project-card { min-width: 0; display: flex; flex-direction: column; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; background: var(--panel); }
+.home-project-image { display: block; aspect-ratio: 16/9; background: #090b0f; }
+.home-project-image img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.home-project-body { display: flex; flex: 1; flex-direction: column; padding: 28px; }
+.home-project-body h3 { margin: 8px 0 14px; font-size: 1.65rem; letter-spacing: -.025em; }
+.home-project-body > p:not(.card-label) { color: var(--muted); font-size: 1rem; margin: 0 0 22px; }
+.home-project-body .tag-row { margin-top: auto; }
+.home-project-body .card-link { align-self: flex-start; margin-top: 22px; }
+.home-page .card-label { color: #b1b8c4; }
+.home-page .tag-row span { padding: 4px 9px; }
+.home-page .section-end-link { margin-top: 26px; }
+.home-experience-entry { display: grid; grid-template-columns: .65fr 1.5fr; gap: 56px; border-top: 1px solid var(--line); padding-top: 28px; }
+.home-experience-meta p { margin: 0 0 7px; color: #d3d8df; font-size: 1rem; }
+.home-experience-meta span { font-size: .875rem; color: var(--muted); }
+.home-experience-entry h3 { margin: 0 0 7px; font-size: 1.4rem; letter-spacing: -.02em; }
+.home-experience-entry .home-employer { color: #d3d8df; margin: 0 0 16px; }
+.home-experience-entry > div > p:last-child { max-width: 740px; margin-bottom: 0; color: var(--muted); }
+.home-page .home-about { grid-template-columns: .65fr 1.5fr; gap: 56px; }
+.home-about h2 { font-size: clamp(1.8rem, 3vw, 2.5rem); }
+.home-about .about-copy > p { font-size: 1rem; }
+.home-education { margin-top: 24px; }
+.home-education strong { display: block; color: #dce0e5; }
+.home-education span { display: block; margin-top: 4px; }
+.home-about .skills { margin-top: 26px; }
+.home-about .skills p { font-size: 1rem; }
+.home-page .contact-section { padding-block: 60px; }
+.home-page .contact-section h2 { font-size: clamp(1.8rem, 3vw, 2.5rem); }
+.home-page .contact-links .button { overflow-wrap: anywhere; min-width: 0; text-align: center; }
+@media (max-width: 1050px) {
+  .home-intro { gap: 32px; }
+  .home-feature-grid { grid-template-columns: 1fr 1fr; }
+  .home-feature-copy { padding: 26px; }
+}
+@media (max-width: 800px) {
+  .home-intro { grid-template-columns: 1fr; gap: 25px; padding-block: 48px 42px; }
+  .home-intro h1 { max-width: 650px; }
+  .home-intro-copy { max-width: 650px; }
+  .home-feature-grid { grid-template-columns: 1fr; }
+  .home-project-grid { gap: 20px; }
+  .home-project-body { padding: 22px; }
+  .home-experience-entry, .home-page .home-about { grid-template-columns: 1fr; gap: 26px; }
+  .home-page .section { padding-block: 62px; }
+  .home-experience-entry > div > p:first-child { margin-top: 0; }
+}
+@media (max-width: 620px) {
+  .home-project-grid { grid-template-columns: 1fr; }
+  .home-feature-heading { align-items: flex-start; }
+  .home-project-meta { text-align: left; }
+  .home-feature-copy { padding: 24px 20px; }
+  .home-feature-links { align-items: flex-start; flex-direction: column; }
+  .home-page .section-end-link { text-align: left; }
+}
