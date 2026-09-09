@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="740" viewBox="0 0 1080 740" role="img" aria-labelledby="title description">
+  <title id="title">ReapKeep: selected runtime connections</title>
+  <desc id="description">Evolution recipes replace weapons in the player build. Death's Decrees recompute player and weapon stats and affect enemy scaling and difficulty reads. GameManager and StageRunController coordinate the session, reset Decrees, open end-of-run UI, and finalize records. Saved scores feed the summary panel. Victories update stage and difficulty completion in the profile. Each box groups collaborating classes.</desc>
+  <defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#f05a93"/></marker></defs>
+  <style>
+    text { font-family: Inter, ui-sans-serif, system-ui, sans-serif; }
+    .node { fill:#141821;stroke:#414856;stroke-width:1; }
+    .central { fill:#251820;stroke:#a45b78;stroke-width:1.5; }
+    .heading { fill:#f3f5f7;font-size:18px;font-weight:650; }
+    .code { fill:#bbc2cc;font-size:14px; }
+    .edge { fill:none;stroke:#f05a93;stroke-width:1.6;marker-end:url(#arrow); }
+    .label { fill:#ff9abe;font-size:14px;font-weight:500; }
+    .note { fill:#bbc2cc;font-size:14px; }
+  </style>
+  <rect width="1080" height="740" fill="#0b0d12"/>
+  <g aria-hidden="true">
+    <path class="edge" d="M918 100V44H162V100"/>
+    <text class="label" x="540" y="28" text-anchor="middle">Recalculate player and weapon stats</text>
+    <path class="edge" d="M410 162H292"/>
+    <text class="label" x="351" y="130" text-anchor="middle">replace</text><text class="label" x="351" y="148" text-anchor="middle">weapon</text>
+    <path class="edge" d="M162 212V330"/>
+    <text class="label" x="182" y="274">recalculate</text>
+    <path class="edge" d="M918 212V330"/>
+    <text class="label" x="898" y="267" text-anchor="end">enemy scaling</text><text class="label" x="898" y="286" text-anchor="end">difficulty reads</text>
+    <path class="edge" d="M670 380H736V162H788"/>
+    <text class="label" x="720" y="267" text-anchor="end">new-run</text><text class="label" x="720" y="286" text-anchor="end">reset</text>
+    <path class="edge" d="M540 430V560"/>
+    <text class="label" x="560" y="499">finalize</text>
+    <path class="edge" d="M410 380H350V508H162V560"/>
+    <text class="label" x="183" y="491">open end-of-run UI</text>
+    <path class="edge" d="M410 614H292"/>
+    <text class="label" x="351" y="589" text-anchor="middle">saved score</text>
+    <path class="edge" d="M670 614H788"/>
+    <text class="label" x="729" y="589" text-anchor="middle">victory only</text>
+  </g>
+  <g>
+    <rect class="node" x="32" y="100" width="260" height="112" rx="8"/>
+    <text class="heading" x="50" y="131">Player build</text>
+    <text class="code" x="50" y="158">Player · PlayerStatsPipeline</text><text class="code" x="50" y="178">PlayerWeaponInventory</text><text class="code" x="50" y="198">WeaponManager</text>
+    <rect class="node" x="410" y="100" width="260" height="112" rx="8"/>
+    <text class="heading" x="428" y="131">Recipes and evolution</text>
+    <text class="code" x="428" y="161">WeaponEvolution</text><text class="code" x="428" y="183">WeaponEvolutionManager</text>
+    <rect class="node" x="788" y="100" width="260" height="112" rx="8"/>
+    <text class="heading" x="806" y="131">Run-wide rules</text>
+    <text class="code" x="806" y="161">DeathsDecreeManager</text><text class="code" x="806" y="183">Active Decrees + modifiers</text>
+    <rect class="node" x="32" y="330" width="260" height="100" rx="8"/>
+    <text class="heading" x="50" y="361">Weapon runtime</text>
+    <text class="code" x="50" y="391">Weapon · WeaponConfig</text><text class="code" x="50" y="412">Calculated stats + behavior</text>
+    <rect class="central" x="410" y="330" width="260" height="100" rx="8"/>
+    <text class="heading" x="428" y="361">Session lifecycle</text>
+    <text class="code" x="428" y="391">GameManager</text><text class="code" x="428" y="412">StageRunController</text>
+    <rect class="node" x="788" y="330" width="260" height="100" rx="8"/>
+    <text class="heading" x="806" y="361">Enemies and difficulty</text>
+    <text class="code" x="806" y="391">EnemyStats · HexManager</text><text class="code" x="806" y="412">EnemyPool: reuse lifecycle</text>
+    <rect class="node" x="32" y="560" width="260" height="108" rx="8"/>
+    <text class="heading" x="50" y="591">Interface</text>
+    <text class="code" x="50" y="621">UIManager · UIConfiguration</text><text class="code" x="50" y="643">PostRunSummaryPanel</text>
+    <rect class="node" x="410" y="560" width="260" height="108" rx="8"/>
+    <text class="heading" x="428" y="591">Run records</text>
+    <text class="code" x="428" y="621">ScoreManager reads RunStats</text><text class="code" x="428" y="643">RunHistory → RunHistoryStore</text>
+    <rect class="node" x="788" y="560" width="260" height="108" rx="8"/>
+    <text class="heading" x="806" y="591">Persistent progression</text>
+    <text class="code" x="806" y="621">StageProgressManager</text><text class="code" x="806" y="643">ProfileSaveStore</text>
+  </g>
+  <text class="note" x="32" y="713">Arrows show selected control or data flow; boxes group classes rather than individual runtime objects.</text>
+</svg>

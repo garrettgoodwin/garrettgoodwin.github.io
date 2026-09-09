@@ -1,4 +1,57 @@
 /* ReapKeep only: preserve the shared portfolio layout and other case studies. */
+.rk-intro-grid { display: grid; grid-template-columns: 1fr 1.15fr; gap: 48px; align-items: center; margin-bottom: 40px; }
+.rk-intro-grid > * { min-width: 0; }
+.rk-intro-copy h1 { margin: 0 0 18px; font-size: clamp(3.3rem, 5.5vw, 5.2rem); }
+.rk-intro-heading { color: #f3f5f7; font-size: clamp(1.4rem, 2.1vw, 1.8rem); line-height: 1.3; letter-spacing: -.02em; margin: 0 0 20px; }
+.reapkeep-page .detail-lede { font-size: 1rem; }
+.reapkeep-page .detail-actions { justify-content: flex-start; align-items: center; gap: 16px; margin-top: 26px; }
+.rk-text-link { font-size: .875rem; text-underline-offset: 5px; }
+.rk-intro-art { margin: 0; }
+.rk-intro-art img { width: 100%; border: 1px solid var(--line); border-radius: 10px; }
+.rk-intro-art figcaption { color: var(--muted); font-size: .875rem; margin-top: 14px; }
+.reapkeep-page .fact-bar { border-top: 1px solid var(--line); border-radius: 8px; }
+.reapkeep-page .case-nav { position: static; display: flex; flex-direction: row; align-items: center; flex-wrap: wrap; padding: 20px 0; background: transparent; }
+.reapkeep-page .project-next { position: static; display: flex; padding-top: 0; background: transparent; }
+.rk-play-view { padding-bottom: 88px; }
+.rk-screen-links { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 28px; border-block: 1px solid var(--line); }
+.rk-screen-links a { padding: 22px 20px; text-decoration: none; border-right: 1px solid var(--line); }
+.rk-screen-links a:last-child { border-right: 0; }
+.rk-screen-links a:hover { background: var(--panel); }
+.rk-screen-links span { display: block; font-size: .875rem; color: var(--muted); margin-bottom: 6px; }
+.rk-screen-links strong { font-size: 1rem; font-weight: 650; }
+.rk-architecture-map { margin: 0; }
+.rk-map-scroll { overflow-x: auto; background: var(--bg); border: 1px solid var(--line); border-radius: 10px; }
+.rk-map-scroll img { width: 100%; min-width: 1080px; height: auto; }
+.rk-architecture-map figcaption { font-size: .875rem; color: var(--muted); margin: 16px 0 0; }
+.rk-architecture-map figcaption a { display: inline-block; color: #ff9abe; margin-left: 8px; text-underline-offset: 4px; }
+.rk-boundaries { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 36px; margin: 40px 0 0; }
+.rk-boundaries h3 { font-size: 1.15rem; margin-bottom: 12px; }
+.rk-boundaries p { color: var(--muted); margin: 0; }
+.rk-chapter-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+.rk-chapter-grid > *, .rk-boundaries > * { min-width: 0; }
+.rk-chapter-copy h3 { font-size: 1.35rem; line-height: 1.3; margin: 32px 0 16px; }
+.rk-chapter-copy h3:first-child { margin-top: 0; }
+.rk-chapter-copy > p { color: var(--muted); margin: 0 0 18px; }
+.rk-example { border-left: 2px solid var(--accent); padding: 4px 0 4px 20px; margin-top: 30px; }
+.rk-example > span { font-size: .875rem; font-weight: 650; color: #ff9abe; }
+.rk-example p { margin: 10px 0 0; color: #dce0e5; }
+.rk-choice { text-align: center; font-size: .9375rem; padding: 16px 20px; border: 1px solid #835069; border-radius: 6px; }
+.rk-fork { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-top: 26px; }
+.rk-fork > div { position: relative; background: var(--panel); padding: 18px; border-top: 2px solid #835069; }
+.rk-fork > div::before { content: ""; position: absolute; top: -28px; height: 26px; width: 1px; background: #835069; left: 50%; }
+.rk-fork strong { display: block; font-size: .9375rem; line-height: 1.4; overflow-wrap: anywhere; }
+.rk-fork p { margin: 9px 0 0; color: var(--muted); font-size: .875rem; }
+.rk-recipe-types { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 30px; margin-top: 42px; padding-top: 30px; border-top: 1px solid var(--line); }
+.rk-recipe-types h3, .rk-detail-pair h3 { font-size: 1.15rem; margin-bottom: 12px; }
+.rk-recipe-types p, .rk-detail-pair p { color: var(--muted); margin: 0; }
+.rk-detail-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; padding-top: 32px; border-top: 1px solid var(--line); margin-top: 42px; }
+.rk-stack-states { list-style: none; padding: 0; margin: 0; }
+.rk-stack-states li + li { border-top: 1px solid var(--line); margin-top: 24px; padding-top: 24px; }
+.rk-stack-states li > p { color: var(--muted); font-size: .875rem; margin: 12px 0 0; }
+.rk-panel-state { padding: 15px 18px; border: 1px solid #835069; border-radius: 5px; font-weight: 650; background: #251820; }
+.rk-panel-state span { display: block; margin-top: 3px; font-size: .875rem; font-weight: 400; color: var(--muted); }
+.rk-panel-state.is-covered { margin: 8px 10px 0; background: var(--panel); border-color: var(--line); color: var(--muted); }
+.reapkeep-page .rk-chapter + .engineering-section { border-top: 1px solid var(--line); }
 .reapkeep-page .eyebrow,
 .reapkeep-page .case-nav a,
 .reapkeep-page .fact-bar dt { font-size: .875rem; }
@@ -91,6 +144,8 @@
 .reapkeep-page .rk-gameplay { padding-top: 0; }
 .reapkeep-page .detail-figure figcaption { font-size: .875rem; color: var(--muted); }
 .rk-tools { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; }
+.rk-tool-wide { grid-column: 1 / -1; border-top: 1px solid var(--line); padding-top: 32px; }
+.reapkeep-page .rk-notes-heading { font-size: 1.5rem; letter-spacing: -.02em; margin-bottom: 28px; }
 .rk-tools h3 { font-size: 1.5rem; letter-spacing: -.02em; }
 .rk-tools article > p { color: var(--muted); }
 .rk-notes { border-top: 1px solid var(--line); }
@@ -100,6 +155,8 @@
 .rk-notes p { max-width: 850px; color: var(--muted); margin: 0 0 24px; }
 .rk-review-note { font-size: .875rem; color: var(--muted); margin: 32px 0 0; max-width: 850px; }
 @media (max-width: 1050px) {
+  .rk-intro-grid { gap: 28px; }
+  .rk-chapter-grid { gap: 36px; }
   .rk-study { gap: 36px; }
   .rk-diagram { padding: 20px; }
   .rk-branches { grid-template-columns: 1fr; padding-top: 0; }
@@ -107,6 +164,13 @@
   .rk-branches li::before { height: 20px; top: -22px; }
 }
 @media (max-width: 800px) {
+  .rk-intro-grid, .rk-chapter-grid { grid-template-columns: 1fr; gap: 32px; }
+  .rk-intro-art { max-width: 700px; }
+  .rk-boundaries, .rk-recipe-types, .rk-detail-pair { grid-template-columns: 1fr; gap: 24px; }
+  .rk-screen-links { grid-template-columns: 1fr; }
+  .rk-screen-links a { border-right: 0; border-bottom: 1px solid var(--line); padding-inline: 8px; }
+  .rk-screen-links a:last-child { border-bottom: 0; }
+  .rk-play-view { padding-bottom: 64px; }
   .rk-study, .rk-tools { grid-template-columns: 1fr; gap: 32px; }
   .rk-study { padding: 52px 0; }
   .rk-architecture-table th, .rk-architecture-table td { padding: 16px 12px; }
@@ -114,6 +178,8 @@
   .rk-tools article + article { border-top: 1px solid var(--line); padding-top: 32px; }
 }
 @media (max-width: 480px) {
+  .rk-fork { gap: 10px; }
+  .rk-fork > div { padding: 12px; }
   .rk-diagram { padding: 16px; }
   .rk-flow li { padding-right: 14px; }
   .reapkeep-page .fact-bar div { padding: 16px; }
